@@ -3,7 +3,7 @@ class Profile < ActiveRecord::Base
 
   belongs_to :user
 
-  enumerize :student_status, in: {"F1" => 1, 
+  enumerize :visa_type, in: {"F1" => 1, 
                           "F2" => 2 , 
                           "H1B" => 3,
                           "Others" => 4}, default: "F1"
@@ -13,7 +13,7 @@ class Profile < ActiveRecord::Base
                           }, default: "Female"
 
 
-  enumerize :faith_status, in: {"Pastor" => 1, 
+  enumerize :faith_level, in: {"Pastor" => 1, 
                           
                           "Regular Member" => 2}, default: "Regular Member"
 
@@ -22,8 +22,4 @@ class Profile < ActiveRecord::Base
                           "Pregnant" => 3,
                           }, default: "Single"
 
-  enumerize :nationality, in: {"China" => 1, 
-                          "Korea" => 2 , 
-                          "Others" => 3,
-                          }, default: "China"
 end
