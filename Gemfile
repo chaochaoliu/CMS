@@ -26,6 +26,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 
+gem 'devise'
+
+gem 'enumerize'
+
+gem 'cancancan', '~> 1.10'
+# gem 'font-awesome-sass'
+
+gem 'rails_admin'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
