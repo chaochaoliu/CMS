@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Full Name:</strong>
+  <%= @profile.full_name %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @profile.gender %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @profile.user.email %>
+</p>
+
+<p>
+  <strong>Date of Birth:</strong>
+  <%= @profile.date_of_birth %>
+</p>
+<p>
+  <strong>Mobile:</strong>
+  <%= @profile.mobile %>
+</p>
+<p>
+  <strong>Nationality:</strong>
+  <%= @profile.nationality %>
+</p>
+<p>
+  <strong>Address:</strong>
+  <%= @profile.address %>
+</p>
+<p>
+  <strong>Marital Status:</strong>
+  <%= @profile.marital_status %>
+</p>
+<p>
+  <strong>Self Description:</strong>
+  <%= @profile.self_description %>
+</p>
+<p>
+  <strong>Faith Level:</strong>
+  <%= @profile.faith_level %>
+</p>
+<p>
+  <strong>Time to Become Member:</strong>
+  <%= @profile.time_to_become_member %>
+</p>
+<p>
+  <strong>Visa Type:</strong>
+  <%= @profile.visa_type %>
+</p>
+<p>
+  <strong>Emergent Contact Person:</strong>
+  <%= @profile.emergency_contact_person %>
+</p>
+
+<p>
+  <strong>House Leader:</strong>
+  <%= @profile.house_leader %>
+</p>
+
+<p>
+  <strong>Group Leader:</strong>
+  <%= @profile.group_leader %>
+</p>
+<p>
+  <strong>Family Member:</strong>
+  <%= @profile.family_member %>
+</p>
+
+<p>
+  <strong>I20 Expired Date:</strong>
+  <%= @profile.i20_expire_date %>
+</p>
+<%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+

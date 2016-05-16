@@ -12,4 +12,24 @@ class User < ActiveRecord::Base
     self.role_id ||= 1
   end
 
+  def admin?
+    self.role.name == 3 || self.role.name == 4
+  end
+
+  def superadmin?
+    self.role.name == 4
+  end
+
+  def staff?
+    self.role.name == 3
+  end
+
+  def approved?
+    self.role.name == 2
+  end
+
+  def un_approved?
+    self.role.name == 1
+  end
+
 end

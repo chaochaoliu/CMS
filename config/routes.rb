@@ -3,7 +3,19 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations"  }
+  
   root 'welcome#index'
+
+  # resources 'roles'
+
+  get 'profiles/new' => 'profiles#new', :as => 'new_profile'
+  get 'profiles/:id/edit' => 'profiles#edit', :as => 'edit_profile'
+  get 'profiles/:id' => 'profiles#show', :as => 'profile'
+  
+  post 'profiles' => 'profiles#create'
+  put 'profiles/:id' => 'profiles#update'
+  patch 'profiles/:id' => 'profiles#update'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
