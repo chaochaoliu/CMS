@@ -42,8 +42,8 @@ class ProfilesController < ApplicationController
   def profile_params
     params.require(:profile).permit(:full_name,:date_of_birth,:gender,:email,
         :mobile,:address,:time_to_become_member,:visa_type,:i20_expire_date,:house_leader,
-        :group_leader,:self_description,:user_id, :nationality,:faith_level, :family_member, :emergency_contact_person,
-        :created_at,:updated_at)
+        :group_leader,:self_description,:user_id, :nationality, :family_member, :emergency_contact_person,
+        :created_at,:updated_at,:group_leader?,:house_leader?)
   end
 
 end

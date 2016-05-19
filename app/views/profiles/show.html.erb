@@ -1,79 +1,135 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+      <div class="row">
+      <div class="col-md-4  toppad  pull-right col-md-offset-5 ">
+          <%= link_to 'Edit Profile', edit_profile_path(@profile) %> |
+          <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
 
-<p>
-  <strong>Full Name:</strong>
-  <%= @profile.full_name %>
-</p>
+       <br>
+       <%= Time.now  %>
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-3 toppad" >
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title"><%= @profile.full_name %></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <!-- <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive"> </div> -->
 
-<p>
-  <strong>Gender:</strong>
-  <%= @profile.gender %>
-</p>
+                <p>
+                  <strong>Image:</strong>
+                  <%= image_tag @profile.image.thumb.url %>
+                </p>
+                
+                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
+                  <dl>
+                    <dt>DEPARTMENT:</dt>
+                    <dd>Administrator</dd>
+                    <dt>HIRE DATE</dt>
+                    <dd>11/12/2013</dd>
+                    <dt>DATE OF BIRTH</dt>
+                       <dd>11/12/2013</dd>
+                    <dt>GENDER</dt>
+                    <dd>Male</dd>
+                  </dl>
+                </div>-->
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td><h4>Basic Info</h4></td>
+                      </tr>
+                      <tr>
+                        <td>Gender</td>
+                        <td><%= @profile.gender %></td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Date of Birth</td>
+                        <td><%= @profile.date_of_birth %></td>
+                      </tr>
 
-<p>
-  <strong>Email:</strong>
-  <%= @profile.user.email %>
-</p>
+                      <tr>
+                        <td>Become Member Since</td>
+                        <td><%= @profile.time_to_become_member %></td>
+                      </tr>
 
-<p>
-  <strong>Date of Birth:</strong>
-  <%= @profile.date_of_birth %>
-</p>
-<p>
-  <strong>Mobile:</strong>
-  <%= @profile.mobile %>
-</p>
-<p>
-  <strong>Nationality:</strong>
-  <%= @profile.nationality %>
-</p>
-<p>
-  <strong>Address:</strong>
-  <%= @profile.address %>
-</p>
-<p>
-  <strong>Marital Status:</strong>
-  <%= @profile.marital_status %>
-</p>
-<p>
-  <strong>Self Description:</strong>
-  <%= @profile.self_description %>
-</p>
-<p>
-  <strong>Faith Level:</strong>
-  <%= @profile.faith_level %>
-</p>
-<p>
-  <strong>Time to Become Member:</strong>
-  <%= @profile.time_to_become_member %>
-</p>
-<p>
-  <strong>Visa Type:</strong>
-  <%= @profile.visa_type %>
-</p>
-<p>
-  <strong>Emergent Contact Person:</strong>
-  <%= @profile.emergency_contact_person %>
-</p>
+                      <tr>
+                        <td>Marital Status</td>
+                        <td>  <%= @profile.marital_status %></td>
+                      </tr>
 
-<p>
-  <strong>House Leader:</strong>
-  <%= @profile.house_leader %>
-</p>
+                       <tr>
+                        <td>Visa Type</td>
+                        <td>  <%= @profile.visa_type %></td>
+                      </tr>
 
-<p>
-  <strong>Group Leader:</strong>
-  <%= @profile.group_leader %>
-</p>
-<p>
-  <strong>Family Member:</strong>
-  <%= @profile.family_member %>
-</p>
+                      <tr>
+                        <td>I20 Expired Date</td>
+                        <td>  <%= @profile.i20_expire_date %> </td>
+                      </tr>
 
-<p>
-  <strong>I20 Expired Date:</strong>
-  <%= @profile.i20_expire_date %>
-</p>
-<%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
+                      <tr>
+                        <td>Family Member</td>
+                        <td>  <%= @profile.family_member %></td>            
+                      </tr>
+                   
+                      <tr>
+                        <td><h4>Contact Info</h4></td>
+                      </tr>
 
+                      
+                      <tr>
+                        <td>Home Address</td>
+                        <td>  <%= @profile.address %></td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td><%= @profile.email %></a></td>
+                      </tr>
+                      <tr>
+                        <td>Phone Number</td>
+                        <td><%= @profile.mobile %></td>            
+                      </tr>
+                      <tr>
+                        <td>Group Leader</td>
+                        <td>  <%= @profile.group_leader %></td>            
+                      </tr>
+                      <tr>
+                        <td>House Leader</td>
+                        <td>  <%= @profile.house_leader %></td>            
+                      </tr>
+
+                      <tr>
+                        <td><h4>Other Info</h4></td>
+                      </tr>
+                      <tr>
+                        <td>Nationality</td>
+                        <td><%= @profile.nationality %></td>
+                      </tr>
+                      <tr>
+                        <td>Self Description</td>
+                        <td><%= @profile.self_description %></td>
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                  
+                  <a href="#" class="btn btn-primary">My Sales Performance</a>
+                  <a href="#" class="btn btn-primary">Team Sales Performance</a>
+                </div>
+              </div>
+            </div>
+                 <div class="panel-footer">
+                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                        <span class="pull-right">
+                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                        </span>
+                    </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>

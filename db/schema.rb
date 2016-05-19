@@ -11,28 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509021626) do
+ActiveRecord::Schema.define(version: 20160519002101) do
 
   create_table "profiles", force: :cascade do |t|
-    t.string   "full_name",                limit: 255
+    t.string   "full_name",                      limit: 255
     t.datetime "date_of_birth"
-    t.integer  "gender",                   limit: 4
-    t.string   "mobile",                   limit: 255
-    t.string   "address",                  limit: 255
+    t.integer  "gender",                         limit: 4
+    t.string   "mobile",                         limit: 255
+    t.string   "address",                        limit: 255
     t.datetime "time_to_become_member"
-    t.integer  "visa_type",                limit: 4
+    t.integer  "visa_type",                      limit: 4
     t.datetime "i20_expire_date"
-    t.string   "house_leader",             limit: 255
-    t.string   "group_leader",             limit: 255
-    t.string   "emergency_contact_person", limit: 255
-    t.text     "self_description",         limit: 65535
-    t.integer  "faith_level",              limit: 4
-    t.integer  "marital_status",           limit: 4
-    t.string   "nationality",              limit: 255
-    t.string   "family_member",            limit: 255
-    t.integer  "user_id",                  limit: 4
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.integer  "house_leader",                   limit: 4
+    t.integer  "group_leader",                   limit: 4
+    t.string   "emergency_contact_person",       limit: 255
+    t.text     "self_description",               limit: 65535
+    t.integer  "marital_status",                 limit: 4
+    t.string   "nationality",                    limit: 255
+    t.string   "family_member",                  limit: 255
+    t.integer  "user_id",                        limit: 4
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.boolean  "group_leader?"
+    t.boolean  "house_leader?"
+    t.boolean  "pastor?"
+    t.string   "email",                          limit: 255
+    t.string   "home_town",                      limit: 255
+    t.string   "image",                          limit: 255
+    t.string   "home_town_contact_person",       limit: 255
+    t.string   "home_town_contact_person_phone", limit: 255
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", unique: true, using: :btree

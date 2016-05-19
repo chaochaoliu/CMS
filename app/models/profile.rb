@@ -1,5 +1,8 @@
 class Profile < ActiveRecord::Base
   extend Enumerize
+  mount_uploader :image, ImageUploader
+  # before_save :set_default_user
+
 
   belongs_to :user
 
@@ -13,13 +16,13 @@ class Profile < ActiveRecord::Base
                           }, default: "Female"
 
 
-  enumerize :faith_level, in: {"Pastor" => 1, 
-                          
-                          "Regular Member" => 2}, default: "Regular Member"
-
   enumerize :marital_status, in: {"Married" => 1, 
                           "Single" => 2 , 
                           "Pregnant" => 3,
                           }, default: "Single"
+
+  # def set_default_user
+  #   user_id ||= current_user.id
+  # end
 
 end
