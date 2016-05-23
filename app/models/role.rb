@@ -3,6 +3,8 @@ class Role < ActiveRecord::Base
 
   has_many :users
   validates :name, presence: true
+  has_paper_trail
+
 
   enumerize :name, in: {"Unapproved" => 1, 
                           "Approved" => 2 , 

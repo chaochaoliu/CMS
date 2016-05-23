@@ -2,6 +2,15 @@ class Profile < ActiveRecord::Base
   extend Enumerize
   mount_uploader :image, ImageUploader
   # before_save :set_default_user
+  validates_processing_of :image
+  validate :image_size_validation
+  has_paper_trail
+
+ 
+private
+  def image_size_validation
+    errors[:image] << "should be less than 3.5MB" if image.size > 3.5.megabytes
+  end
 
 
   belongs_to :user

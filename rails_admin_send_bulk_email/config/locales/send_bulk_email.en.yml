@@ -1,0 +1,11 @@
+
+en:
+  admin:
+    actions:
+      send_bulk_email:
+        title: "Send Bulk Email"
+        menu: "Send Bulk Email for %{model_label} '%{object_label}'"
+        breadcrumb: "Send Bulk Email"
+        link: "Send Bulk Email"
+        bulk_link: "Send Bulk Email selected %{model_label_plural}"
+        done: "Send Bulk Emailed"

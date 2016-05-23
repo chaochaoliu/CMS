@@ -2,7 +2,6 @@
     <h1 class="well">My Profile</h1>
   <div class="col-lg-12 well">
   <div class="row">
-    <form>
         <%= form_for(@profile) do |f| %>
         <%if @profile.errors.any? %>
           <div id="error_explanation">
@@ -58,12 +57,12 @@
           </div>        
         </div>
 
-        <div class="control-group">
+       <!--  <div class="control-group">
             <label class="control-label" for="filebutton">* Image</label>
             <div class="controls">
               <input id="filebutton" name="filebutton" class="input-file" type="file">
             </div>
-        </div>
+        </div> -->
 
          <div class="row">
           <h3>Contact Info</h3>
@@ -84,7 +83,6 @@
               <div class="form-group">
               <label>Address</label>
               <%= f.text_field :address,placeholder: "Enter Address Here..", class: "form-control" %>
-
             </div>               
                                         
         <div class="row">
@@ -97,6 +95,7 @@
             <label>Nationality</label>
             <%= f.text_field :nationality,placeholder: "Enter Nationality Here..", class: "form-control"  %>  
           </div>  
+
           <div class="col-sm-6 form-group">
             <label>*  I20 Expired Date </label><br>           
              <%= f.date_select :i20_expire_date, placeholder: "Enter I20 Expired Date here...", type: "datetime", class: "form-control",:start_year => 2010, :end_year => 2030,:default => {:year => 2016, :month => 'May', :day => 15} %>
@@ -132,14 +131,21 @@
            <div class="field">
             <%= f.label :image %><br>
             <%= f.file_field :image %>
+            <% if f.object.image? %>
+              <%= image_tag f.object.image.thumb.url %>
+              <%= f.label :remove_image %>
+              <%= f.check_box :remove_image %> 
+            <% end %>
           </div>
-          
+
            <%= f.hidden_field :user_id, :value => current_user.id %>
           <br>
+
+
           <%= f.submit "Submit",type: "submit", class: "btn btn-lg btn-info" %>       
           
         <%end%> 
-      </form>
+   
         </div>
   </div>
   </div>

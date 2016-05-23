@@ -21,3 +21,12 @@
 
 en:
   hello: "Hello world"
+
+en:
+  admin:
+    actions:
+      send_bulk_email:
+        menu: 'Bulk Email'
+        title: 'Send Email...'
+        breadcrumb: 'Bulk Email'
+        bulk_link: "Send Email to Selected %{model_label_plural}"

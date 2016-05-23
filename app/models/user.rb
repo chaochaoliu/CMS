@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   belongs_to :role
   before_save :set_default_role
+  has_paper_trail
 
   def set_default_role
     self.role_id ||= 1

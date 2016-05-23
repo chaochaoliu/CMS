@@ -38,6 +38,10 @@ gem 'rails_admin'
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
 
+gem 'paper_trail'
+
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
