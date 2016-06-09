@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
 
+  resources :messages
+  resources :events
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations"  }
   
-  root 'welcome#index'
+  root 'main#index'
 
+  get 'welcome' => 'welcome#index', :as => 'welcome'
+  get 'news' => 'news#index', :as => 'news'
+
+
+ 
   # resources 'roles'
 
   get 'profiles/new' => 'profiles#new', :as => 'new_profile'
@@ -15,6 +22,12 @@ Rails.application.routes.draw do
   post 'profiles' => 'profiles#create'
   put 'profiles/:id' => 'profiles#update'
   patch 'profiles/:id' => 'profiles#update'
+
+
+ # bulk_delete POST|DELETE /:model_name/bulk_delete(.:format)     rails_admin/main#bulk_delete
+
+
+  resources "messages"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

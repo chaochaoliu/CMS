@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160521004405) do
+ActiveRecord::Schema.define(version: 20160609043021) do
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "start_time"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "subject",    limit: 255
+    t.string   "to",         limit: 255
+    t.string   "cc",         limit: 255
+    t.string   "bcc",        limit: 255
+    t.text     "content",    limit: 65535
+    t.string   "attachment", limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string   "full_name",                      limit: 255
@@ -64,15 +82,12 @@ ActiveRecord::Schema.define(version: 20160521004405) do
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
     t.integer  "failed_attempts",        limit: 4,   default: 0,  null: false
-    t.string   "unlock_token",           limit: 255
-    t.datetime "locked_at"
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
   create_table "version_associations", force: :cascade do |t|
     t.integer "version_id",       limit: 4

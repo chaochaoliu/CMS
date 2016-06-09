@@ -13,15 +13,17 @@
             </ul>
           </div>
         <%end%>
-
-        
-          <div class="row">
+          
+      <div class="row">
+          <div class="col-sm-6 form-group">
             <label>* Required </label>
-         </div>
-      
+          </div> 
+        </div>
 
         <div class="row">
-          <h3>Basic Info</h3>
+          <div class="col-sm-6 form-group">
+            <h3>Basic Info</h3>
+          </div> 
         </div>
 
         <div class="row">
@@ -57,15 +59,10 @@
           </div>        
         </div>
 
-       <!--  <div class="control-group">
-            <label class="control-label" for="filebutton">* Image</label>
-            <div class="controls">
-              <input id="filebutton" name="filebutton" class="input-file" type="file">
-            </div>
-        </div> -->
-
-         <div class="row">
-          <h3>Contact Info</h3>
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <h3>Contact Info</h3>
+          </div> 
         </div>
                    
           <div class="col-sm-4 form-group">
@@ -76,7 +73,6 @@
               <div class="col-sm-4 form-group">
                   <label>Emergency Contact Person</label>
                     <%= f.text_field :emergency_contact_person, class: "form-control", placeholder: "Enter Emergency Contact Person Here..." %>
-
               </div>
             </div>
 
@@ -99,27 +95,10 @@
           <div class="col-sm-6 form-group">
             <label>*  I20 Expired Date </label><br>           
              <%= f.date_select :i20_expire_date, placeholder: "Enter I20 Expired Date here...", type: "datetime", class: "form-control",:start_year => 2010, :end_year => 2030,:default => {:year => 2016, :month => 'May', :day => 15} %>
-          </div> 
-            
+          </div>   
         </div>
 
-      <div class="row">
-        <div class="col-sm-6 form-group">
-          <div class="form-group">
-            <label>House Leader</label>
-            <%= f.text_field :house_leader, placeholder: "Enter House Leader Here..", class: "form-control"  %>
-          </div>  
-        </div> 
-
-        <div class="col-sm-6 form-group"> 
-          <div class="form-group">
-            <label>Group Leader</label>
-            <%= f.text_field :group_leader, placeholder: "Enter Group Leader Here..", class: "form-control"  %>
-          </div> 
-        </div> 
-      </div> 
-
-          <div class="row">
+         <div class="row">
              <div class="col-sm-6 form-group"> 
                 <div class="form-group">
                   <label>Family Member</label>
@@ -128,21 +107,46 @@
             </div> 
           </div>
 
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <div class="form-group">
+            <label>House Leader</label>
+            <%= f.check_box :house_leader  %> <br />     
+          </div>  
+        </div> 
+
+       <div class="row">
+        <div class="col-sm-6 form-group">
+          <div class="form-group">
+            <label>Group Leader</label>
+            <%= f.check_box :group_leader  %> <br />     
+          </div>  
+        </div> 
+      </div> 
+
+         
+    <div class="row">
+      <div class="col-sm-6 form-group">
            <div class="field">
-            <%= f.label :image %><br>
-            <%= f.file_field :image %>
-            <% if f.object.image? %>
-              <%= image_tag f.object.image.thumb.url %>
-              <%= f.label :remove_image %>
-              <%= f.check_box :remove_image %> 
-            <% end %>
-          </div>
+              <%= f.label :image %><br>
+              <%= f.file_field :image %>
+              <% if f.object.image? %>
+                <%= image_tag f.object.image.thumb.url %>
+                <%= f.label :remove_image %>
+                <%= f.check_box :remove_image %> 
+              <% end %>
+           </div>
+      </div> 
+    </div> 
 
            <%= f.hidden_field :user_id, :value => current_user.id %>
           <br>
 
-
-          <%= f.submit "Submit",type: "submit", class: "btn btn-lg btn-info" %>       
+ <div class="row">
+      <div class="col-sm-6 form-group">
+          <%= f.submit "Submit",type: "submit", class: "btn btn-lg btn-info" %>   
+             </div> 
+    </div>     
           
         <%end%> 
    

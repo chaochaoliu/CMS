@@ -1,0 +1,140 @@
+<div class="container">
+    <h1 class="well">My Profile</h1>
+  <div class="col-lg-12 well">
+  <div class="row">
+        <%= form_for(@contact) do |f| %>
+     
+          <div class="row">
+            <label>* Required </label>
+         </div>
+      
+
+        <div class="row">
+          <h3>Basic Info</h3>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <label>* Full Name </label>
+             <%= f.text_field :full_name, :required => true, id: "full_name", placeholder: "Enter your full name", class: "form-control", type: "text" %>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label>Gender *</label>
+            <%= f.select :gender, Profile.gender.values, {}, class: "form-control"  %>  
+          </div>
+        </div>
+
+        <div class="row">                               
+          <div class="col-sm-6 form-group">          
+            <label>* Date of Birth </label><br>
+            <%= f.date_select :date_of_birth,placeholder: "Enter Date of Birth here...", type: "datetime", class: "form-control",:start_year => 1940, :end_year => 2016,:default => {:year => 1990, :month => 'May', :day => 15} %>
+          </div>
+          <div class="col-sm-6 form-group">
+             <label> * Become Member Since</label><br>           
+             <%= f.date_select :time_to_become_member,placeholder: "Enter Time to Become Member here...", type: "datetime", class: "form-control",:start_year => 1980, :end_year => 2016,:default => {:year => 2000, :month => 'May', :day => 15},class: "form-control" %>
+          </div>  
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <label>* Visa Type</label>
+            <%= f.select :visa_type, Profile.visa_type.values, {},class: "form-control"   %>  
+          </div>  
+          <div class="col-sm-6 form-group">
+            <label>* Maritial Status</label>
+            <%= f.select :marital_status, Profile.marital_status.values, {},class: "form-control"  %> 
+          </div>        
+        </div>
+
+       <!--  <div class="control-group">
+            <label class="control-label" for="filebutton">* Image</label>
+            <div class="controls">
+              <input id="filebutton" name="filebutton" class="input-file" type="file">
+            </div>
+        </div> -->
+
+         <div class="row">
+          <h3>Contact Info</h3>
+        </div>
+                   
+          <div class="col-sm-4 form-group">
+              <label>Phone Number</label>
+              <%= f.telephone_field :mobile, :required => true,class: "form-control", placeholder: "Enter Phone Number Here..."   %>
+          </div>
+                            
+              <div class="col-sm-4 form-group">
+                  <label>Emergency Contact Person</label>
+                    <%= f.text_field :emergency_contact_person, class: "form-control", placeholder: "Enter Emergency Contact Person Here..." %>
+
+              </div>
+            </div>
+
+              <div class="form-group">
+              <label>Address</label>
+              <%= f.text_field :address,placeholder: "Enter Address Here..", class: "form-control" %>
+            </div>               
+                                        
+        <div class="row">
+          <h3>Other Info</h3>
+        </div>                
+   
+        <div class="row">
+          
+          <div class="col-sm-6 form-group">
+            <label>Nationality</label>
+            <%= f.text_field :nationality,placeholder: "Enter Nationality Here..", class: "form-control"  %>  
+          </div>  
+
+          <div class="col-sm-6 form-group">
+            <label>*  I20 Expired Date </label><br>           
+             <%= f.date_select :i20_expire_date, placeholder: "Enter I20 Expired Date here...", type: "datetime", class: "form-control",:start_year => 2010, :end_year => 2030,:default => {:year => 2016, :month => 'May', :day => 15} %>
+          </div> 
+            
+        </div>
+
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <div class="form-group">
+            <label>House Leader</label>
+            <%= f.text_field :house_leader, placeholder: "Enter House Leader Here..", class: "form-control"  %>
+          </div>  
+        </div> 
+
+        <div class="col-sm-6 form-group"> 
+          <div class="form-group">
+            <label>Group Leader</label>
+            <%= f.text_field :group_leader, placeholder: "Enter Group Leader Here..", class: "form-control"  %>
+          </div> 
+        </div> 
+      </div> 
+
+          <div class="row">
+             <div class="col-sm-6 form-group"> 
+                <div class="form-group">
+                  <label>Family Member</label>
+                  <%= f.text_field :family_member, placeholder: "Enter Family Member Here..", class: "form-control"  %>
+                </div> 
+            </div> 
+          </div>
+
+           <div class="field">
+            <%= f.label :image %><br>
+            <%= f.file_field :image %>
+            <% if f.object.image? %>
+              <%= image_tag f.object.image.thumb.url %>
+              <%= f.label :remove_image %>
+              <%= f.check_box :remove_image %> 
+            <% end %>
+          </div>
+
+           <%= f.hidden_field :user_id, :value => current_user.id %>
+          <br>
+
+
+          <%= f.submit "Submit",type: "submit", class: "btn btn-lg btn-info" %>       
+          
+        <%end%> 
+   
+        </div>
+  </div>
+  </div>

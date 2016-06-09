@@ -1,0 +1,87 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+
+              <%= form_for(@message) do |f|%>
+              
+
+                <% if @message.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+                    <ul>
+                    <% @message.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+
+                <fieldset>
+                <legend class="text-center header">Send Email</legend>
+               
+            
+
+              <div class="row">
+                 <div class="form-group">
+                   <span class="col-md-1 col-md-offset-1 text-center"><h4>To:</h4></span>
+                  <div class="col-md-6">
+                      <%= f.text_field :to, :value => @ids, class: "form-control"%>
+                    </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                   <span class="col-md-1 col-md-offset-1 text-center"><h4>Cc:</h4></span>
+                  <div class="col-md-6">
+                      <%= f.text_field :cc, class: "form-control"%>
+                    </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                   <span class="col-md-1 col-md-offset-1 text-center"><h4>Bcc:</h4></span>
+                  <div class="col-md-6">
+                      <%= f.text_field :bcc, class: "form-control"%>
+                    </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                   <span class="col-md-1 col-md-offset-1 text-center"><h4>Subject:</h4></span>
+                  <div class="col-md-6">
+                      <%= f.text_field :subject, class: "form-control"%>
+                    </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                   <span class="col-md-1 col-md-offset-1 text-center"><h4>Content:</h4></span>
+                  <div class="col-md-6">
+                      <%= f.text_area :content, cols: "30", rows: "10",class: "form-control"%>
+                    </div>
+                </div>
+              </div>
+
+              
+
+              <div class="form-group">
+                  <div class="col-md-8 text-center">
+                      <button type="submit" class="btn btn-primary btn-lg">Send</button>
+                  </div>
+              </div>
+             
+              </fieldset>
+            <% end %>
+          </div>
+        </div>
+    </div>
+</div>
+
+

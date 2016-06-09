@@ -22,14 +22,21 @@ module RailsAdmin
         end
 
         register_instance_option :controller do
+          # byebug
           Proc.new do
             @objects = list_entries(@model_config)
-            @objects.ids.each do |id|
-              @profile = Profile.find(id)
-              UserMailer.welcome_email(@profile).deliver_later
-            end
+            # # byebug
+            # @objects.ids.each do |id|
+            #   @profile = Profile.find(id)
+            #   UserMailer.welcome_email(@profile).deliver_later
+            # end
+            # @message = Message.new
 
-            render @action.template_name
+            # byebug
+            # render @action.template_name
+            # new_contact_path
+
+          redirect_to main_app.new_message_path(:ids => @objects.ids)
           end
         end
 

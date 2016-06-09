@@ -31,7 +31,6 @@ gem 'devise'
 gem 'enumerize'
 
 gem 'cancancan', '~> 1.10'
-# gem 'font-awesome-sass'
 
 gem 'rails_admin'
 
@@ -39,6 +38,12 @@ gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
 
 gem 'paper_trail'
+
+gem 'mail_form'
+
+gem 'simple_form'
+
+gem "simple_calendar", "~> 2.0"
 
 
 
@@ -55,6 +60,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem "letter_opener"
+
 end
 
 group :development do
@@ -63,5 +69,7 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+    # gem 'rails_admin_send_bulk_email', :path => './rails_admin_send_bulk_email'
+
 end
 

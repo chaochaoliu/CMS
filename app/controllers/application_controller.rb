@@ -6,13 +6,19 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   before_filter :set_paper_trail_whodunnit
+  # before_filter :set_time_zone, if: :user_signed_in?
+
 
 
   def after_sign_in_path_for(resource)
-     if current_user.admin? 
+    if current_user.un_approved?
+      welcome_path
+    elsif current_user.approved? 
+      root_path 
+    elsif current_user.admin? 
       rails_admin_path
     else
-      profile_path(current_user.profile)
+      new_user_session_path 
     end 
 
     # welcome_path if current_user.un_approved?
@@ -28,4 +34,11 @@ class ApplicationController < ActionController::Base
     flash[:error] = "Access denied!"
     redirect_to new_user_session_path
   end
+
+  
+  # private
+
+  #   def set_time_zone
+  #     Time.zone = current_user.time_zone
+  #   end
 end
