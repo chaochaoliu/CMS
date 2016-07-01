@@ -10,12 +10,13 @@ module RailsAdmin
         register_instance_option :collection do
           true
         end
+
         register_instance_option :http_methods do
-          [:get, :post]
+          [:post]
         end
-        register_instance_option :link_icon do
-          'icon-envelope'
-        end
+        # register_instance_option :link_icon do
+        #   'icon-envelope'
+        # end
         # You may or may not want pjax for your action
         register_instance_option :pjax? do
           false
@@ -24,17 +25,7 @@ module RailsAdmin
         register_instance_option :controller do
           # byebug
           Proc.new do
-            @objects = list_entries(@model_config)
-            # # byebug
-            # @objects.ids.each do |id|
-            #   @profile = Profile.find(id)
-            #   UserMailer.welcome_email(@profile).deliver_later
-            # end
-            # @message = Message.new
-
-            # byebug
-            # render @action.template_name
-            # new_contact_path
+            @objects = list_entries(@model_config, :send_bulk_email)
 
           redirect_to main_app.new_message_path(:ids => @objects.ids)
           end

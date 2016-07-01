@@ -28,7 +28,7 @@
                  <div class="form-group">
                    <span class="col-md-1 col-md-offset-1 text-center"><h4>To:</h4></span>
                   <div class="col-md-6">
-                      <%= f.text_field :to, :value => @ids, class: "form-control"%>
+                      <%= f.text_area :to, :value => emailArrToHtml(@emails), class: "form-control"%>
                     </div>
                 </div>
               </div>
@@ -69,7 +69,16 @@
                 </div>
               </div>
 
-              
+                 <div class="row">
+                  <div class="col-sm-6 form-group col-md-offset-2">
+                       <div class="field">
+                          <%= f.label :attachment %><br>
+                          <%= f.file_field :attachment %>
+                          
+                       </div>
+                  </div> 
+                </div> 
+                          
 
               <div class="form-group">
                   <div class="col-md-8 text-center">

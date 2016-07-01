@@ -16,6 +16,11 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @ids = params[:ids]
+    @emails = Array.new
+    @ids.each do |id|
+      profile = Profile.find(id)
+      @emails << profile.email
+    end
     @message = Message.new
   end
 
@@ -30,6 +35,17 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
+
+        @receivers = @message.to.split(',')
+        
+
+        @receivers.each do |receiver|
+          UserMailer.notice_email(@message, receiver).deliver_later
+          
+        end
+
+        
+
         format.html { redirect_to @message, notice: 'Message was successfully created.' }
         format.json { render :show, status: :created, location: @message }
       else

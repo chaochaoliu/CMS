@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @news.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @news.author %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @news.date %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @news.content %>
+</p>
+
+<div > 
+    <%= image_tag @news.image.url%>
+</div>
+<br>
+<%= link_to '编辑', edit_news_path(@news) %><br>
+<%= link_to '后退', news_index_path %><br>
+<%= link_to '评论', new_comment_path(:news_id => @news.id) %>
+<br>
+<br>
+<% @news.comments.each do |comment|%>
+<%= comment.user.profile.full_name %><br>
+<%= comment.content %>
+
+<br>
+<%end%>

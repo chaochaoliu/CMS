@@ -25,16 +25,22 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <%= link_to 'Home', root_path %>
+                        <%= link_to '主页', root_path %>
                     </li>
                     <li>
-                        <%= link_to 'News', news_path %>
+                        <%= link_to '新闻', news_index_path %>
                     </li>
                     <li>
-                        <%= link_to 'Events', events_path %>
+                        <%= link_to '讲道', sermons_path %>
                     </li>
                     <li>
-                        <%= link_to 'BBS', root_path %>
+                        <%= link_to '活动', events_path %>
+                    </li>
+                    <li>
+                        <%= link_to '日历', events_path %>
+                    </li>
+                    <li>
+                        <%= link_to 'BBS', bbs_path %>
                     </li>
                                 
                     <li class="dropdown">
@@ -44,7 +50,7 @@
                                 <%= link_to 'My Profile', profile_path(current_user.profile) %>
                             </li>
                             <li>
-                                <%= link_to 'My Events', root_path %>
+                                <%= link_to 'My Events', events_path %>
                             </li>
                             <li>
                                 <%= link_to 'Contact Us', root_path %>

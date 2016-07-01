@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>证道</h1>
+<div class=" col-md-12 col-lg-12 "> 
+<table class="table table-user-information">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Preacher</th>
+      <th>Category</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sermons.each do |sermon| %>
+      <tr>
+        <td><%= link_to sermon.title, sermon %></td>
+        <td><%= sermon.preacher %></td>
+        <td><%= sermon.category %></td>
+        <td><%= sermon.date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<%= link_to 'New Sermon', new_sermon_path %>

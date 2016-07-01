@@ -21,7 +21,7 @@ class ProfilesController < ApplicationController
       respond_to do |format|
       if @profile.save
         UserMailer.welcome_email(@profile).deliver_later
-        format.html{ redirect_to root_path, notice: "Profile was successfully created."}
+        format.html{ redirect_to welcome_path, notice: "Profile was successfully created."}
         format.json{ render :show, status: :created, location: @profile}
       else
         format.html{ render :new }

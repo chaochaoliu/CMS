@@ -1,7 +1,28 @@
 Rails.application.routes.draw do
 
+  resources :sermon_reflections
+  resources :sermons
+  get 'comments/new'
+
+  get 'comments/create'
+
+  get 'comments/index'
+
+  get 'comments/edit'
+
+  resources :news
+  get 'reflections/new'
+
+  get 'reflections/create'
+
+  get 'reflections/edit'
+
   resources :messages
   resources :events
+  resources :registrations
+  resources :reflections
+  resources :comments
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations"  }
@@ -9,7 +30,8 @@ Rails.application.routes.draw do
   root 'main#index'
 
   get 'welcome' => 'welcome#index', :as => 'welcome'
-  get 'news' => 'news#index', :as => 'news'
+  get 'bbs' => 'bbs#index', :as => 'bbs'
+
 
 
  

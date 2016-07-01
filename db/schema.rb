@@ -11,13 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160609043021) do
+ActiveRecord::Schema.define(version: 20160701000545) do
 
-  create_table "events", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "start_time"
+  create_table "comments", force: :cascade do |t|
+    t.string   "content",    limit: 255
+    t.integer  "user_id",    limit: 4
+    t.integer  "news_id",    limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  add_index "comments", ["news_id"], name: "index_comments_on_news_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.datetime "start_time"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.text     "description", limit: 65535
   end
 
   create_table "messages", force: :cascade do |t|
@@ -29,6 +41,17 @@ ActiveRecord::Schema.define(version: 20160609043021) do
     t.string   "attachment", limit: 255
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "news", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.string   "author",     limit: 255
+    t.datetime "date"
+    t.text     "content",    limit: 65535
+    t.string   "image",      limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.boolean  "approved?"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -62,11 +85,57 @@ ActiveRecord::Schema.define(version: 20160609043021) do
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", unique: true, using: :btree
 
+  create_table "reflections", force: :cascade do |t|
+    t.text     "content",    limit: 65535
+    t.integer  "user_id",    limit: 4
+    t.integer  "event_id",   limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "reflections", ["event_id"], name: "index_reflections_on_event_id", using: :btree
+  add_index "reflections", ["user_id"], name: "index_reflections_on_user_id", using: :btree
+
+  create_table "registrations", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "event_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "registrations", ["event_id"], name: "index_registrations_on_event_id", using: :btree
+  add_index "registrations", ["user_id"], name: "index_registrations_on_user_id", using: :btree
+
   create_table "roles", force: :cascade do |t|
     t.integer  "name",        limit: 4
     t.text     "description", limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "sermon_reflections", force: :cascade do |t|
+    t.text     "content",    limit: 65535
+    t.integer  "user_id",    limit: 4
+    t.integer  "sermon_id",  limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.boolean  "public?"
+  end
+
+  add_index "sermon_reflections", ["sermon_id"], name: "index_sermon_reflections_on_sermon_id", using: :btree
+  add_index "sermon_reflections", ["user_id"], name: "index_sermon_reflections_on_user_id", using: :btree
+
+  create_table "sermons", force: :cascade do |t|
+    t.string   "title",        limit: 255
+    t.string   "scripture",    limit: 255
+    t.datetime "date"
+    t.string   "preacher",     limit: 255
+    t.text     "content",      limit: 65535
+    t.integer  "category",     limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "sermon_audio", limit: 255
+    t.string   "sermon_video", limit: 255
   end
 
   create_table "users", force: :cascade do |t|
@@ -112,4 +181,12 @@ ActiveRecord::Schema.define(version: 20160609043021) do
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
   add_index "versions", ["transaction_id"], name: "index_versions_on_transaction_id", using: :btree
 
+  add_foreign_key "comments", "news"
+  add_foreign_key "comments", "users"
+  add_foreign_key "reflections", "events"
+  add_foreign_key "reflections", "users"
+  add_foreign_key "registrations", "events"
+  add_foreign_key "registrations", "users"
+  add_foreign_key "sermon_reflections", "sermons"
+  add_foreign_key "sermon_reflections", "users"
 end

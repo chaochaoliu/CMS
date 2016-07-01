@@ -5,11 +5,16 @@ class Profile < ActiveRecord::Base
   validates_processing_of :image
   validate :image_size_validation
   has_paper_trail
+  before_save :set_default_email
 
- 
+
 private
   def image_size_validation
     errors[:image] << "should be less than 3.5MB" if image.size > 3.5.megabytes
+  end
+
+   def set_default_email
+    self.email ||= self.user.email
   end
 
 

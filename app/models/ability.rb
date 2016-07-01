@@ -8,12 +8,12 @@ class Ability
       if user.superadmin?
         can :manage, :all             # allow superadmins to do anything
       elsif user.staff?
-        can :manage, [Profile, Message, PaperTrail::Version]  
+        can :manage, [Profile, Message, Registration,PaperTrail::Version, Event]  
         can :manage, User, :role_id => 1..2
         can :manage, Role, :id => 1..2
       end
     elsif user.approved?
-      can :manage, Event
+      can :manage, [Event,Registration,News]
         can [:read, :update], Profile do |profile|
           profile.try(:user) == user
         end  
