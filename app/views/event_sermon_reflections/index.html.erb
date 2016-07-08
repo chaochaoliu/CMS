@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Event Sermon Reflections</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Content</th>
+      <th>Event sermon</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event_sermon_reflections.each do |event_sermon_reflection| %>
+      <tr>
+        <td><%= event_sermon_reflection.name %></td>
+        <td><%= event_sermon_reflection.content %></td>
+        <td><%= event_sermon_reflection.event_sermon %></td>
+        <td><%= link_to 'Show', event_sermon_reflection %></td>
+        <td><%= link_to 'Edit', edit_event_sermon_reflection_path(event_sermon_reflection) %></td>
+        <td><%= link_to 'Destroy', event_sermon_reflection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Event sermon reflection', new_event_sermon_reflection_path %>

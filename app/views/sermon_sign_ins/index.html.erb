@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Sermon Sign Ins</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sermon_sign_ins.each do |sermon_sign_in| %>
+      <tr>
+        <td><%= link_to 'Show', sermon_sign_in %></td>
+        <td><%= link_to 'Edit', edit_sermon_sign_in_path(sermon_sign_in) %></td>
+        <td><%= link_to 'Destroy', sermon_sign_in, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sermon sign in', new_sermon_sign_in_path %>

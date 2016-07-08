@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event_sermon_reflection.name %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @event_sermon_reflection.content %>
+</p>
+
+<p>
+  <strong>Event sermon:</strong>
+  <%= @event_sermon_reflection.event_sermon %>
+</p>
+
+<%= link_to 'Edit', edit_event_sermon_reflection_path(@event_sermon_reflection) %> |
+<%= link_to 'Back', event_sermon_reflections_path %>

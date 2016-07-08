@@ -1,24 +1,17 @@
 
 
-<%= month_calendar events: @events do |date, events| %>
-  <%= date.strftime("%d") %>
-
-  <% events.each do |event| %>
-    <div>
-      <%= link_to event.name, event_path(event) %>
-    </div>
-  <% end %>
-<% end %>
-
 <p id="notice"><%= notice %></p>
 
-<h3>Listing Events</h3>
-
-<table>
+<h3>活动列表</h3>
+<div class=" col-md-12 col-lg-12 "> 
+<table class="table table-user-information">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Start time</th>
+      <th>活动名称</th>
+      <th>主办单位</th>
+      <th>面向对象</th>  
+      <th>剩余席位</th>   
+      <th>申请截止时间</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,14 +19,17 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.name %></td>
-        <td><%= event.start_time %></td>
-        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to event.name, event_path(event) %></td>
+        <td><%= event.ministry %></td>
+        <td><%= event.target_people %></td>
+        <td><%= event.remaining_reservations %></td>
+        <td><%= event.deadline_of_appication %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= link_to 'New Event', new_event_path %></td>
+</div>
+<%= link_to '新建活动', new_event_path %></td>
 

@@ -34,7 +34,16 @@ private
                           "Single" => 2 , 
                           "Pregnant" => 3,
                           }, default: "Single"
+  enumerize :is_house_leader, in: {"Yes" => 1, 
+                          "No" => 2 , 
+                          }, default: "No"
+  enumerize :is_group_leader, in: {"Yes" => 1, 
+                          "No" => 2 , 
+                          }, default: "No"
 
+  enumerize :is_pastor, in: {"Yes" => 1, 
+                          "No" => 2 , 
+                          }, default: "No"
   # def set_default_user
   #   user_id ||= current_user.id
   # end

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>证道</h1>
+<h4>主日证道</h4>
 <div class=" col-md-12 col-lg-12 "> 
 <table class="table table-user-information">
   <thead>
@@ -14,12 +14,96 @@
   </thead>
 
   <tbody>
-    <% @sermons.each do |sermon| %>
+    <% @sermons.sunday_service.each do |sermon| %>
       <tr>
         <td><%= link_to sermon.title, sermon %></td>
         <td><%= sermon.preacher %></td>
         <td><%= sermon.category %></td>
         <td><%= sermon.date %></td>
+        <td><%= link_to '编辑', edit_sermon_path(sermon) %><td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<h4>周三礼拜</h4>
+<div class=" col-md-12 col-lg-12 "> 
+<table class="table table-user-information">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Preacher</th>
+      <th>Category</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sermons.wednesday_evening_service.each do |sermon| %>
+      <tr>
+        <td><%= link_to sermon.title, sermon %></td>
+        <td><%= sermon.preacher %></td>
+        <td><%= sermon.category %></td>
+        <td><%= sermon.date %></td>
+        <td><%= link_to '编辑', edit_sermon_path(sermon) %><td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<h4>早礼拜</h4>
+<div class=" col-md-12 col-lg-12 "> 
+<table class="table table-user-information">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Preacher</th>
+      <th>Category</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sermons.morning_service.each do |sermon| %>
+      <tr>
+        <td><%= link_to sermon.title, sermon %></td>
+        <td><%= sermon.preacher %></td>
+        <td><%= sermon.category %></td>
+        <td><%= sermon.date %></td>
+        <td><%= link_to '编辑', edit_sermon_path(sermon) %><td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<h4>祷告会</h4>
+<div class=" col-md-12 col-lg-12 "> 
+<table class="table table-user-information">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Preacher</th>
+      <th>Category</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sermons.prayer_meeting.each do |sermon| %>
+      <tr>
+        <td><%= link_to sermon.title, sermon %></td>
+        <td><%= sermon.preacher %></td>
+        <td><%= sermon.category %></td>
+        <td><%= sermon.date %></td>
+        <td><%= link_to '编辑', edit_sermon_path(sermon) %><td>
+
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +111,4 @@
 </div>
 <br>
 
-<%= link_to 'New Sermon', new_sermon_path %>
+<%= link_to '新建讲道', new_sermon_path %>

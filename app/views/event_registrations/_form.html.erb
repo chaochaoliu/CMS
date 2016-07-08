@@ -1,0 +1,29 @@
+<%= form_for(@event_registration) do |f| %>
+  <% if @event_registration.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event_registration.errors.count, "error") %> prohibited this event_registration from being saved:</h2>
+
+      <ul>
+      <% @event_registration.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= f.hidden_field :event_id, :value => @event.id %>
+
+    <div class="field">
+    <label> 姓名 </label><br>
+    <%= f.text_field :applicant_name %>
+  </div>
+
+      <div class="field">
+    <label> 申请理由 </label><br>
+    <%= f.text_area :application_reason, cols: "80", rows: "15" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,33 +1,44 @@
+<p id="notice"><%= notice %></p>
 
 <div class="container">
       <div class="row">
 
 <p>
-  <strong>名称</strong><br>
+  <strong>活动名称</strong><br>
   <%= @event.name %>
 </p>
 
 <p>
-  <strong>时间</strong>
+  <strong>活动时间</strong>
   <%= @event.start_time %>
 </p>
 
 <p>
-  <strong>简介</strong><br>
+  <strong>活动安排</strong><br>
   <%= @event.description %>
 </p>
 
+<p>
+  <strong>适合人群</strong><br>
+  <%= @event.target_people %>
+</p>
+<p>
+  <strong>人数限制</strong><br>
+  <%= @event.max_number_of_people %>
+</p>
+<p>
+  <strong>剩余席位</strong><br>
+  <%= @event.remaining_reservations %>
+</p>
 
-<%= link_to '提交感想', new_reflection_path(:event_id => @event.id)%> |
+<%= link_to '申请参加', new_event_registration_path(:event_id => @event.id) %>
 <%= link_to '后退', events_path %>
-<%= link_to 'Registration', new_registration_path(:event_id => @event.id) %>
 
-
-<% @event.reflections.each do |reflection|%>
-<p><%= reflection.content %></p>
+</div>
+</div>
+<% @event.event_registrations.each do |event_registration|  %>
+<%= event_registration.applicant_name %>
+<%= event_registration.application_reason %>
+<br>
 <%end%>
-
-</div>
-</div>
-
 

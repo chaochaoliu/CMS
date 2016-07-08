@@ -15,10 +15,31 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+    <div class="field">
+    <%= f.label :ministry %><br>
+    <%= f.text_field :ministry %>
+  </div>
   <div class="field">
     <%= f.label :start_time %><br>
     <%= f.datetime_select :start_time %>
   </div>
+    <div class="field">
+    <%= f.label :max_number_of_people %><br>
+    <%= f.text_field :max_number_of_people %>
+  </div>
+    <div class="field">
+    <%= f.label :remaining_reservations %><br>
+    <%= f.text_field :remaining_reservations %>
+  </div>
+    <div class="field">
+    <%= f.label :target_people %><br>
+    <%= f.text_field :target_people %>
+  </div>
+  <div class="field">
+    <%= f.label :deadline_of_appication %><br>
+    <%= f.datetime_select :deadline_of_appication %>
+  </div>
+
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>

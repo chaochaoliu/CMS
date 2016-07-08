@@ -1,0 +1,29 @@
+<%= form_for(@event_sermon_reflection) do |f| %>
+  <% if @event_sermon_reflection.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event_sermon_reflection.errors.count, "error") %> prohibited this event_sermon_reflection from being saved:</h2>
+
+      <ul>
+      <% @event_sermon_reflection.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+  <label>内容</label>
+    <%= f.text_area :content, cols: "40", rows: "10" %>
+  </div>
+
+  <div class="field">
+  <label>姓名</label>
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.hidden_field :event_sermon_id, :value => @event_sermon.id %><br>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

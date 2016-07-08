@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h4>我的礼拜感想</h4>
+<div class=" col-md-12 col-lg-12 "> 
+<table class="table table-user-information">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @my_sermon_reflections.each do |my_sermon_reflection| %>
+      <tr>
+        <td><%= link_to my_sermon_reflection.sermon.title + ' 感想', my_sermon_reflection %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br><br>
+
+<h4>我的活动感想</h4>
+<div class=" col-md-12 col-lg-12 "> 
+<table class="table table-user-information">
+  <thead>
+    <tr>
+      <th>Title</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @my_event_sermon_reflections.each do |my_event_sermon_reflection| %>
+      <tr>
+        <td><%= link_to my_event_sermon_reflection.event_sermon.title + ' 感想', my_event_sermon_reflection %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

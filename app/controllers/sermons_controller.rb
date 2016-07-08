@@ -1,5 +1,6 @@
 class SermonsController < ApplicationController
   before_action :set_sermon, only: [:show, :edit, :update, :destroy]
+  layout "sermon", only: [:show]
 
   # GET /sermons
   # GET /sermons.json
@@ -69,6 +70,6 @@ class SermonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sermon_params
-      params.require(:sermon).permit(:title, :date, :preacher, :content, :category, :scripture)
+      params.require(:sermon).permit(:title, :date, :preacher, :content, :category, :scripture,:sermon_audio,:sermon_video)
     end
 end

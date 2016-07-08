@@ -5,6 +5,12 @@ class SermonReflectionsController < ApplicationController
   # GET /sermon_reflections.json
   def index
     @sermon_reflections = SermonReflection.all
+    # @event_sermon_reflections = EventSermonReflection.all
+  end
+
+  def my_reflections
+    @my_sermon_reflections = current_user.sermon_reflections
+    @my_event_sermon_reflections = current_user.event_sermon_reflections
   end
 
   # GET /sermon_reflections/1

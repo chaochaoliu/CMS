@@ -21,11 +21,24 @@ class EventsController < ApplicationController
   def edit
   end
 
+  def calendar
+    @events = Event.all
+  end
+
+  def my_events
+    @my_events = current_user.events
+  end
+
+  def event_detail
+    @event = Event.find(params[:event_id])
+    @event_sermons = @event.event_sermons
+    @event_notices = @event.event_notices
+  end
+
   # POST /events
   # POST /events.json
   def create
     @event = Event.new(event_params)
-
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
@@ -69,6 +82,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :start_time, :description)
+      params.require(:event).permit(:name, :start_time, :description,:ministry, :max_number_of_people, :target_people, :remaining_reservations, :deadline_of_appication)
     end
 end

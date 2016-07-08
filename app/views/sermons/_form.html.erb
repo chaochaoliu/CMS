@@ -34,7 +34,11 @@
     <%= f.label :content %><br>
     <%= f.text_area :content,cols: "50", rows: "10"   %>
   </div>
- 
+  <div class="field">
+     <%= f.label :sermon_audio %><br>
+     <%= f.file_field :sermon_audio %>
+  </div>
+
   <br>
   <div class="actions">
     <%= f.submit %>

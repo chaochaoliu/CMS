@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titil: MyString
+  preacher: MyString
+  sermon_date: 2016-07-04 20:06:59
+  content: MyString
+  sermon_audio: MyString
+  sermon_video: MyString
+
+two:
+  titil: MyString
+  preacher: MyString
+  sermon_date: 2016-07-04 20:06:59
+  content: MyString
+  sermon_audio: MyString
+  sermon_video: MyString

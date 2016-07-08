@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Event Sermons</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titil</th>
+      <th>Preacher</th>
+      <th>Sermon date</th>
+      <th>Content</th>
+      <th>Sermon audio</th>
+      <th>Sermon video</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event_sermons.each do |event_sermon| %>
+      <tr>
+        <td><%= event_sermon.title %></td>
+        <td><%= event_sermon.preacher %></td>
+        <td><%= event_sermon.sermon_date %></td>
+        <td><%= event_sermon.content %></td>
+        <td><%= event_sermon.sermon_audio %></td>
+        <td><%= event_sermon.sermon_video %></td>
+        <td><%= link_to 'Show', event_sermon %></td>
+        <td><%= link_to 'Edit', edit_event_sermon_path(event_sermon) %></td>
+        <td><%= link_to 'Destroy', event_sermon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Event sermon', new_event_sermon_path %>

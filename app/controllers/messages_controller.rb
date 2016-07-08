@@ -44,8 +44,6 @@ class MessagesController < ApplicationController
           
         end
 
-        
-
         format.html { redirect_to @message, notice: 'Message was successfully created.' }
         format.json { render :show, status: :created, location: @message }
       else

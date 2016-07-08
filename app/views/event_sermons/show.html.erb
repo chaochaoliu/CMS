@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>主题：</strong>
+  <%= @event_sermon.title %>
+</p>
+
+<p>
+  <strong>讲道人：</strong>
+  <%= @event_sermon.preacher %>
+</p>
+
+<p>
+  <strong>日期：</strong>
+  <%= @event_sermon.sermon_date %>
+</p>
+
+<p>
+  <strong>主要内容：</strong>
+  <%= @event_sermon.content %>
+</p>
+
+<p>
+  <strong>音频</strong>
+  <%= @event_sermon.sermon_audio %>
+</p>
+
+<p>
+  <strong>视频</strong>
+  <%= @event_sermon.sermon_video %>
+</p>
+
+<%= link_to 'Edit', edit_event_sermon_path(@event_sermon) %> |
+<%= link_to 'Back', event_sermons_path %>
+<br><br>
+<%= link_to '写感想', new_event_sermon_reflection_path(:event_sermon_id => @event_sermon.id) %>
+<br><br>
+
+<h4>活动感想</h4>
+<% @event_sermon.event_sermon_reflections.each do |event_sermon_reflection|%>
+
+<%= event_sermon_reflection.name %>
+<br>
+<%= event_sermon_reflection.content %>
+<br><br>
+<%end%>
