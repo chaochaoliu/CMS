@@ -10,6 +10,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @event_registration = EventRegistration.find_by(:user_id => current_user.id, :event_id => params[:event_id])
   end
 
   # GET /events/new

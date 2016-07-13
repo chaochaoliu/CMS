@@ -12,6 +12,8 @@
       <th>面向对象</th>  
       <th>剩余席位</th>   
       <th>申请截止时间</th>
+      <th>状态</th>
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,6 +26,8 @@
         <td><%= event.target_people %></td>
         <td><%= event.remaining_reservations %></td>
         <td><%= event.deadline_of_appication %></td>
+        <td>未参加</td>
+
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
       </tr>

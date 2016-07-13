@@ -41,10 +41,7 @@ gem 'paper_trail'
 
 gem 'mail_form'
 
-gem 'simple_form'
-
 gem "simple_calendar", "~> 2.0"
-
 
 
 

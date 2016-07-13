@@ -31,7 +31,13 @@
   <%= @event.remaining_reservations %>
 </p>
 
+<% if @event_registration.nil? %>
 <%= link_to '申请参加', new_event_registration_path(:event_id => @event.id) %>
+<% elsif @event_registration.approved == 1 %>
+<label>已提交申请，等待批准<label>
+<% else %>
+<label>已参加<label>
+<% end %>
 <%= link_to '后退', events_path %>
 
 </div>

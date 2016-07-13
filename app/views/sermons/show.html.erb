@@ -47,16 +47,11 @@
 <%= sermon_reflection.content %>
 <br><br>
 <%end%>
-
-<audio controls>
-  <source src="test.mp3" type="audio/mpeg">
-Your browser does not support the audio element.
+<audio src="<%= audio_path 'test.mp3'%>" type="audio/mpeg" controls>
+    Your browser does not support the audio element.
 </audio>
 
-<audio controls>
-  <source src="http://developer.mozilla.org/@api/deki/files/2926/=AudioTest_(1).ogg">
-Your browser does not support the audio element.
-</audio>
+<br>
 
 <video width="480" controls poster="https://archive.org/download/WebmVp8Vorbis/webmvp8.gif" >
   <source src="https://archive.org/download/WebmVp8Vorbis/webmvp8.webm" type="video/webm">
