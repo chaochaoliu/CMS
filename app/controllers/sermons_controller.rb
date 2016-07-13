@@ -1,6 +1,5 @@
 class SermonsController < ApplicationController
   before_action :set_sermon, only: [:show, :edit, :update, :destroy]
-  layout "sermon", only: [:show]
 
   # GET /sermons
   # GET /sermons.json
