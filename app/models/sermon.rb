@@ -1,8 +1,8 @@
 class Sermon < ActiveRecord::Base
   extend Enumerize
   mount_uploader :sermon_audio, SermonUploader
-  has_many :sermon_reflections
-  has_many :sermon_sign_ins
+  has_many :sermon_reflections, dependent: :destroy
+  has_many :sermon_sign_ins, dependent: :destroy
   has_paper_trail
   scope :sunday_service, -> { where category: 1}
   scope :morning_service, -> { where category: 2}

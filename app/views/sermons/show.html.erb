@@ -29,11 +29,24 @@
   <%= @sermon.category %>
 </p>
 
-<p>
   <strong>Audio:</strong>
-  <%= @sermon.sermon_audio %>
-</p>
 
+<audio src="<%= audio_path 'test.mp3'%>" type="audio/mpeg" controls>
+    Your browser does not support the audio element.
+</audio>
+
+<br><br>
+
+<%= video_tag "chengzhang.mp4", :size => "400x300", :controls => true %>
+<br><br>
+  <strong> Video:</strong>
+
+<video width="480" controls poster="https://archive.org/download/WebmVp8Vorbis/webmvp8.gif" >
+  <source src="https://archive.org/download/WebmVp8Vorbis/webmvp8.webm" type="video/webm">
+  Your browser doesn't support HTML5 video tag.
+</video>
+
+<br><br>
 <%= link_to 'Edit', edit_sermon_path(@sermon) %> |
 <%= link_to 'Back', sermons_path %><br>
 <%= link_to '签到', sermon_sign_ins_path(:sermon_id => @sermon.id,:user_id => current_user.id), method: :post %>
@@ -47,53 +60,7 @@
 <%= sermon_reflection.content %>
 <br><br>
 <%end%>
-<audio src="<%= audio_path 'test.mp3'%>" type="audio/mpeg" controls>
-    Your browser does not support the audio element.
-</audio>
 
-<br>
 
-<video width="480" controls poster="https://archive.org/download/WebmVp8Vorbis/webmvp8.gif" >
-  <source src="https://archive.org/download/WebmVp8Vorbis/webmvp8.webm" type="video/webm">
- <!--  <source src="https://archive.org/download/WebmVp8Vorbis/webmvp8_512kb.mp4" type="video/mp4">
-  <source src="https://archive.org/download/WebmVp8Vorbis/webmvp8.ogv" type="video/ogg"> -->
-  Your browser doesn't support HTML5 video tag.
-</video>
 
-<!-- <div id="jquery_jplayer_1" class="jp-jplayer"></div>
-<div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
-  <div class="jp-type-single">
-    <div class="jp-gui jp-interface">
-      <div class="jp-volume-controls">
-        <button class="jp-mute" role="button" tabindex="0">mute</button>
-        <button class="jp-volume-max" role="button" tabindex="0">max volume</button>
-        <div class="jp-volume-bar">
-          <div class="jp-volume-bar-value"></div>
-        </div>
-      </div>
-      <div class="jp-controls-holder">
-        <div class="jp-controls">
-          <button class="jp-play" role="button" tabindex="0">play</button>
-          <button class="jp-stop" role="button" tabindex="0">stop</button>
-        </div>
-        <div class="jp-progress">
-          <div class="jp-seek-bar">
-            <div class="jp-play-bar"></div>
-          </div>
-        </div>
-        <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
-        <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
-        <div class="jp-toggles">
-          <button class="jp-repeat" role="button" tabindex="0">repeat</button>
-        </div>
-      </div>
-    </div>
-    <div class="jp-details">
-      <div class="jp-title" aria-label="title">&nbsp;</div>
-    </div>
-    <div class="jp-no-solution">
-      <span>Update Required</span>
-      To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
-    </div>
-  </div>
-</div> -->
+

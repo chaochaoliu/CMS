@@ -1,7 +1,6 @@
 class ProfilesController < ApplicationController
-  layout "landing"
+  layout :decide_layout
   load_and_authorize_resource
-
   
   def index
   end
@@ -44,6 +43,13 @@ class ProfilesController < ApplicationController
   end
 
   private
+  def decide_layout
+    if current_user.approved?
+      "application"
+    else
+      "landing"
+    end
+  end
 
   def profile_params
     params.require(:profile).permit(:full_name,:date_of_birth,:gender,:email,

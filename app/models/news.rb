@@ -1,11 +1,11 @@
 class News < ActiveRecord::Base
   extend Enumerize
-  has_many :comments
+  has_many :comments, dependent: :destroy
   mount_uploader :image, ImageUploader
   has_paper_trail
 
   scope :church, -> { where category: 1}
-  scope :elime, -> { where category: 2}
+  scope :elim, -> { where category: 2}
   scope :missions, -> { where category: 3}
   scope :grace_and_testimony, -> { where category: 4}
   scope :others, -> { where category: 5}

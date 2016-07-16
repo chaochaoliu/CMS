@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-
   <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="This is designed for SF Gratia Church.">
+    <meta name="author" content="Kevin Liu">
 
     <title>三藩中文教会</title>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
+  <p id="notice"><%= notice %></p>
+
      <div id="wrapper">
 <!-- Sidebar -->
         <div id="sidebar-wrapper">
@@ -29,6 +31,9 @@
                   <%= link_to '<i class="fa fa-home" aria-hidden="true"></i> 主页'.html_safe, root_path %>
                 </li>
                 <li>
+                  <%= link_to '<i class="fa fa-bell"></i>通知'.html_safe, notifications_path %>
+                </li>
+                <li>
                   <%= link_to '<i class="fa fa-newspaper-o" aria-hidden="true"></i>新闻'.html_safe, news_index_path %>
                 </li>
                 <li>
@@ -41,12 +46,13 @@
                 <li>
                   <%= link_to '<i class="fa fa-calendar" aria-hidden="true"></i></i>日历'.html_safe, calendar_path %>                  
                 </li>
+                
                 <li>
-                  <%= link_to '<i class="fa fa-user" aria-hidden="true"></i>我的资料'.html_safe, calendar_path %> 
+                  <%= link_to '<i class="fa fa-user" aria-hidden="true"></i>我的资料'.html_safe, current_user.profile %> 
                     
                 </li>
                 <li>
-                  <%= link_to '<i class="fa fa-medkit"></i>我的活动'.html_safe, my_events_path %> 
+                  <%= link_to '<i class="fa fa-users" aria-hidden="true"></i>我的活动'.html_safe, my_events_path %> 
                     
                 </li>
                 <li>
@@ -54,7 +60,7 @@
                     
                 </li>
                 <li>
-                  <%= link_to '<i class="fa fa-medkit"></i>提交新闻'.html_safe, new_news_path %> 
+                  <%= link_to '<i class="fa fa-newspaper-o" aria-hidden="true"></i>提交新闻'.html_safe, new_news_path %> 
                     
                 </li>
                 <li>
@@ -64,26 +70,33 @@
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
+
+
  <div class="header col-lg-12 ">
-<a href="#menu-toggle" class="btn btn-default menubtn" id="menu-toggle"><i class="fa fa-bars"></i></a>
+    <a href="#menu-toggle" class="btn btn-default menubtn" id="menu-toggle"><i class="fa fa-bars"></i></a>
 
 
-<div class="logo" ><%= image_tag "logo_06.png" %><p><b> 三藩中文教会</b><br> 周报 02.13.2016</p></div>
-</div>
-        <div id="page-content-wrapper" class="sermon">
+    <div class="logo" ><%= image_tag "logo_06.png" %><p><b> 三藩中文教会</b><br> 网上管理系统 </p>
+    </div>
+ </div>
+ 
+ <!-- Page Content -->
 
-
-            <div class="container-fluid">
-                <div class="row">
-                   
-                    <div class="col-lg-12 maincontent">                  
-                          <div class="clear"></div>
-                            <%= yield %>
-                 
+    <div id="page-content-wrapper" class="sermon">
+        <div class="container-fluid">
+            <div class="row">
+               
+                <div class="col-lg-12 maincontent">                  
+                      
+                        <%= yield %>
                 </div>
             </div>
         </div>
- </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+</div>
+ <!-- /#wrapper -->
+
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <!-- Menu Toggle Script -->
     <script>

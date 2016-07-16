@@ -5,12 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable 
 
   has_one :profile, dependent: :destroy
-  has_many :event_registrations
+  has_many :event_registrations, dependent: :destroy
   has_many :events, through: :event_registrations
-  has_many :comments
-  has_many :sermon_reflections
-  has_many :sermon_sign_ins
-  has_many :event_sermon_reflections
+  has_many :comments, dependent: :destroy
+  has_many :sermon_reflections, dependent: :destroy
+  has_many :sermon_sign_ins, dependent: :destroy
+  has_many :event_sermon_reflections, dependent: :destroy
   belongs_to :role
   before_save :set_default_role
   has_paper_trail

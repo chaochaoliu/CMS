@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :notifications
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations"  }
   resources :event_sermon_reflections
   resources :event_sermons

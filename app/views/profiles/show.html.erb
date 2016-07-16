@@ -22,62 +22,80 @@
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
-                        <td><h4>Basic Info</h4></td>
+                        <td><h4>账户信息</h4></td>
                       </tr>
                       <tr>
-                        <td>Gender</td>
+                        <td>登录邮箱</td>
+                        <td><%= @profile.user.email %></td>
+                      </tr>
+
+                      <tr>
+                        <td>修改登录信息</td>
+                        <td><%= link_to '修改登录信息', edit_user_registration_path %></td>
+                      </tr>
+                      
+                      <tr>
+                        <td><h4>基本资料</h4></td>
+                      </tr>
+                      <tr>
+                        <td>性别</td>
                         <td><%= @profile.gender %></td>
                       </tr>
                       
                       <tr>
-                        <td>Date of Birth</td>
+                        <td>出生日期</td>
                         <td><%= @profile.date_of_birth %></td>
                       </tr>
 
                       <tr>
-                        <td>Become Member Since</td>
+                        <td>坚信日期</td>
                         <td><%= @profile.time_to_become_member %></td>
                       </tr>
 
                       <tr>
-                        <td>Marital Status</td>
+                        <td>婚姻状况</td>
                         <td>  <%= @profile.marital_status %></td>
                       </tr>
 
                        <tr>
-                        <td>Visa Type</td>
+                        <td>签证类型</td>
                         <td>  <%= @profile.visa_type %></td>
                       </tr>
 
                       <tr>
-                        <td>I20 Expired Date</td>
+                        <td>I20有效期至</td>
                         <td>  <%= @profile.i20_expire_date %> </td>
                       </tr>
 
                       <tr>
-                        <td>Family Member</td>
+                        <td>家庭成员</td>
                         <td>  <%= @profile.family_member %></td>            
                       </tr>
+                      <tr>
+                       
                    
                       <tr>
-                        <td><h4>Contact Info</h4></td>
+                        <td><h4>联系信息</h4></td>
                       </tr>
 
                       
                       <tr>
-                        <td>Home Address</td>
+                        <td>美国住址</td>
                         <td>  <%= @profile.address %></td>
                       </tr>
                       <tr>
-                        <td>Email</td>
+                        <td>邮箱</td>
                         <td><%= @profile.email %></a></td>
                       </tr>
                       <tr>
-                        <td>Phone Number</td>
+                        <td>手机号码</td>
                         <td><%= @profile.mobile %></td>            
                       </tr>
                       <tr>
-                        <td>Group Leader</td>
+                      <td>紧急联系人</td>
+                        <td>  <%= @emergency_contact_person %></td>            
+                      </tr>
+                        <td>小组长</td>
                         <td>  <%= @profile.group_leader %></td>            
                       </tr>
                       <tr>
@@ -86,14 +104,37 @@
                       </tr>
 
                       <tr>
-                        <td><h4>Other Info</h4></td>
+                        <td><h4>其他信息</h4></td>
                       </tr>
                       <tr>
-                        <td>Nationality</td>
+                        <td>国籍</td>
                         <td><%= @profile.nationality %></td>
                       </tr>
                       <tr>
-                        <td>Self Description</td>
+                      <td>家乡住址</td>
+                        <td><%= @profile.home_town %></td>
+                      </tr>
+                      <tr>
+                      <td>家乡联系人</td>
+                        <td><%= @profile.home_town_contact_person %></td>
+                      </tr>
+                      <tr>
+                      <td>家乡联系人联系方式</td>
+                        <td><%= @profile.home_town_contact_person_phone %></td>
+                      </tr>
+                       <td>是否是小组长</td>
+                        <td><%= @profile.is_group_leader %></td>
+                      </tr>
+                      <tr>
+                        <td>是否是House Leader</td>
+                        <td><%= @profile.is_house_leader %></td>
+                      </tr>
+                      <tr>
+                        <td>是否是牧师</td>
+                        <td><%= @profile.is_pastor %></td>
+                      </tr>
+                      <tr>
+                        <td>自我介绍</td>
                         <td><%= @profile.self_description %></td>
                       </tr>      
                     </tbody>
@@ -101,13 +142,6 @@
                 </div>
               </div>
             </div>
-                <!--  <div class="panel-footer">
-                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-                        <span class="pull-right">
-                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                        </span>
-                  </div>   -->       
           </div>
         </div>
       </div>

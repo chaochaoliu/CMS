@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160708054305) do
+ActiveRecord::Schema.define(version: 20160715053015) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "content",    limit: 255
@@ -103,6 +103,15 @@ ActiveRecord::Schema.define(version: 20160708054305) do
     t.datetime "updated_at",               null: false
     t.boolean  "approved?"
     t.integer  "category",   limit: 4
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string   "title",        limit: 255
+    t.text     "content",      limit: 65535
+    t.string   "publisher",    limit: 255
+    t.datetime "publish_date"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "profiles", force: :cascade do |t|
