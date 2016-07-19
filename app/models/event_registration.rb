@@ -4,6 +4,11 @@ class EventRegistration < ActiveRecord::Base
   has_paper_trail
   extend Enumerize
 
+  validates :user_id, presence: true, numericality: true
+  validates :event_id, presence: true, numericality: true
+  validates :applicant_name, presence: true
+  validates :application_reason, presence: true
+
 
   enumerize :approved, in: {"Unapproved" => 1, 
                           "Approved" => 2

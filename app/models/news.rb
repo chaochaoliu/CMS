@@ -1,5 +1,10 @@
 class News < ActiveRecord::Base
   extend Enumerize
+  validates :title, presence: true
+  validates :content, presence: true
+  validates :author, presence: true, length: { maxmum: 100 }
+
+
   has_many :comments, dependent: :destroy
   mount_uploader :image, ImageUploader
   has_paper_trail

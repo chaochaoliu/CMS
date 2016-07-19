@@ -4,6 +4,10 @@ class Sermon < ActiveRecord::Base
   has_many :sermon_reflections, dependent: :destroy
   has_many :sermon_sign_ins, dependent: :destroy
   has_paper_trail
+  validates :title, presence: true
+  validates :preacher, presence: true
+  validates :category, presence: true, numericality: true
+
   scope :sunday_service, -> { where category: 1}
   scope :morning_service, -> { where category: 2}
   scope :prayer_meeting, -> { where category: 3}

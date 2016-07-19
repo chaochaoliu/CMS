@@ -7,6 +7,41 @@ class Profile < ActiveRecord::Base
   has_paper_trail
   before_save :set_default_email
 
+  validates :full_name, presence: true
+  validates :date_of_birth, presence: true
+  validates :gender, presence: true, numericality: true
+  validates :mobile, presence: true, numericality: true, length: { in: 10..16 }
+  validates :address, presence: true
+  validates :time_to_become_member, presence: true
+  validates :visa_type, presence: true, numericality: true
+  validates :i20_expire_date, presence: true
+  validates :image, presence: true
+  validates :nationality, presence: true
+  validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
+  validates :address, presence: true
+  validates :group_leader, presence: true
+  validates :house_leader, presence: true
+  validates :home_town, presence: true
+  validates :home_town_contact_person, presence: true
+  validates :home_town_contact_person_phone, presence: true
+  validates :is_house_leader, presence: true, numericality: true
+  validates :is_group_leader, presence: true, numericality: true
+  validates :is_pastor, presence: true, numericality: true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 private
   def image_size_validation
@@ -64,8 +99,5 @@ private
   enumerize :is_pastor, in: {"是" => 1, 
                           "否" => 2 , 
                           }, default: "否"
-  # def set_default_user
-  #   user_id ||= current_user.id
-  # end
 
 end

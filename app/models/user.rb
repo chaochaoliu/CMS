@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   before_save :set_default_role
   has_paper_trail
 
+  validates :email, presence: true
+  validates :role_id, presence: true, numericality: true
+
   def set_default_role
     self.role_id ||= 1
   end
