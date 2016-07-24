@@ -1,4 +1,4 @@
-class Comment < ActiveRecord::Base
+class NewsComment < ActiveRecord::Base
   belongs_to :user
   belongs_to :news
   has_paper_trail

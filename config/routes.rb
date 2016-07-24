@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :suggestions
   resources :notifications
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations"  }
   resources :event_sermon_reflections
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
   resources :messages
   resources :events
   resources :event_registrations
-  resources :comments
+  resources :news_comments
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
@@ -40,6 +41,7 @@ Rails.application.routes.draw do
   get 'event_detail' => 'events#event_detail', :as => 'event_detail'
   get 'calendar' => 'events#calendar', :as => 'calendar'
   get 'my_reflections' => 'sermon_reflections#my_reflections', :as => 'my_reflections'
+  get 'thank_you' => 'suggestions#thank_you_for_suggestion', :as => 'thank_you_for_suggestion'
 
 
 

@@ -14,8 +14,8 @@ class Sermon < ActiveRecord::Base
   scope :wednesday_evening_service, -> { where category: 4}
 
 
-  enumerize :category, in: {"Sunday Service" => 1, 
-                            "Morning Service" => 2 , 
-                            "Prayer Meeting" => 3,
-                       "Wednesday Evening Service" => 4}, default: "Morning Service"
+  enumerize :category, in: {"主日礼拜" => 1, 
+                            "早礼拜" => 2 , 
+                            "祷告会" => 3,
+                       "周三晚礼拜" => 4}, default: "早礼拜"
 end

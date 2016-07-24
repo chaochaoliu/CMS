@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+ 
 
 <p>
   <strong>Title:</strong>
@@ -9,6 +9,10 @@
   <strong>Content:</strong>
   <%= @notification.content %>
 </p>
+
+<div > 
+    <%= image_tag @notification.image.url%>
+</div>
 
 <p>
   <strong>Publisher:</strong>

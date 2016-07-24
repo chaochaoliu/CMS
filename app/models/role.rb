@@ -1,7 +1,6 @@
 class Role < ActiveRecord::Base
   extend Enumerize
   has_many :users
-  validates :name, presence: true
   has_paper_trail
 
   validates :name, presence: true

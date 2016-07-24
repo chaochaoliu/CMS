@@ -11,18 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719032438) do
+ActiveRecord::Schema.define(version: 20160723221221) do
 
-  create_table "comments", force: :cascade do |t|
-    t.string   "content",    limit: 255
-    t.integer  "user_id",    limit: 4
-    t.integer  "news_id",    limit: 4
+  create_table "church_emails", force: :cascade do |t|
+    t.integer  "position",   limit: 4
+    t.string   "email",      limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
-  add_index "comments", ["news_id"], name: "index_comments_on_news_id", using: :btree
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+  create_table "daily_scriptures", force: :cascade do |t|
+    t.string   "title",        limit: 255
+    t.text     "content",      limit: 65535
+    t.datetime "publish_date"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "event_notices", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -53,6 +57,8 @@ ActiveRecord::Schema.define(version: 20160719032438) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "user_id",         limit: 4
+    t.integer  "privacy_level",   limit: 4
+    t.string   "title",           limit: 255
   end
 
   add_index "event_sermon_reflections", ["event_sermon_id"], name: "index_event_sermon_reflections_on_event_sermon_id", using: :btree
@@ -67,6 +73,7 @@ ActiveRecord::Schema.define(version: 20160719032438) do
     t.integer  "event_id",     limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.string   "length",       limit: 255
   end
 
   create_table "events", force: :cascade do |t|
@@ -105,6 +112,17 @@ ActiveRecord::Schema.define(version: 20160719032438) do
     t.integer  "category",   limit: 4
   end
 
+  create_table "news_comments", force: :cascade do |t|
+    t.string   "content",    limit: 255
+    t.integer  "user_id",    limit: 4
+    t.integer  "news_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "news_comments", ["news_id"], name: "index_news_comments_on_news_id", using: :btree
+  add_index "news_comments", ["user_id"], name: "index_news_comments_on_user_id", using: :btree
+
   create_table "notifications", force: :cascade do |t|
     t.string   "title",        limit: 255
     t.text     "content",      limit: 65535
@@ -112,6 +130,7 @@ ActiveRecord::Schema.define(version: 20160719032438) do
     t.datetime "publish_date"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.string   "image",        limit: 255
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -121,40 +140,24 @@ ActiveRecord::Schema.define(version: 20160719032438) do
     t.string   "mobile",                         limit: 255
     t.string   "address",                        limit: 255
     t.datetime "time_to_become_member"
-    t.integer  "visa_type",                      limit: 4
-    t.datetime "i20_expire_date"
-    t.string   "house_leader",                   limit: 255
     t.integer  "group_leader",                   limit: 4
     t.string   "emergency_contact_person",       limit: 255
-    t.text     "self_description",               limit: 65535
     t.integer  "marital_status",                 limit: 4
     t.string   "nationality",                    limit: 255
     t.string   "family_member",                  limit: 255
     t.integer  "user_id",                        limit: 4
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.string   "email",                          limit: 255
-    t.string   "home_town",                      limit: 255
     t.string   "image",                          limit: 255
     t.string   "home_town_contact_person",       limit: 255
     t.string   "home_town_contact_person_phone", limit: 255
-    t.integer  "is_house_leader",                limit: 4
     t.integer  "is_group_leader",                limit: 4
     t.integer  "is_pastor",                      limit: 4
+    t.string   "hobby",                          limit: 255
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", unique: true, using: :btree
-
-  create_table "reflections", force: :cascade do |t|
-    t.text     "content",    limit: 65535
-    t.integer  "user_id",    limit: 4
-    t.integer  "event_id",   limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  add_index "reflections", ["event_id"], name: "index_reflections_on_event_id", using: :btree
-  add_index "reflections", ["user_id"], name: "index_reflections_on_user_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.integer  "name",        limit: 4
@@ -170,6 +173,8 @@ ActiveRecord::Schema.define(version: 20160719032438) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "privacy_level", limit: 4
+    t.string   "title",         limit: 255
+    t.string   "name",          limit: 255
   end
 
   add_index "sermon_reflections", ["sermon_id"], name: "index_sermon_reflections_on_sermon_id", using: :btree
@@ -196,6 +201,16 @@ ActiveRecord::Schema.define(version: 20160719032438) do
     t.datetime "updated_at",                 null: false
     t.string   "sermon_audio", limit: 255
     t.string   "sermon_video", limit: 255
+    t.string   "length",       limit: 255
+  end
+
+  create_table "suggestions", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.text     "content",    limit: 65535
+    t.string   "name",       limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "send_to",    limit: 4
   end
 
   create_table "users", force: :cascade do |t|
@@ -241,13 +256,11 @@ ActiveRecord::Schema.define(version: 20160719032438) do
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
   add_index "versions", ["transaction_id"], name: "index_versions_on_transaction_id", using: :btree
 
-  add_foreign_key "comments", "news"
-  add_foreign_key "comments", "users"
   add_foreign_key "event_registrations", "events"
   add_foreign_key "event_registrations", "users"
   add_foreign_key "event_sermon_reflections", "event_sermons"
-  add_foreign_key "reflections", "events"
-  add_foreign_key "reflections", "users"
+  add_foreign_key "news_comments", "news"
+  add_foreign_key "news_comments", "users"
   add_foreign_key "sermon_reflections", "sermons"
   add_foreign_key "sermon_reflections", "users"
   add_foreign_key "sermon_sign_ins", "sermons"

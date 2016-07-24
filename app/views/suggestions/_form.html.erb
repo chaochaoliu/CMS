@@ -1,0 +1,32 @@
+<%= form_for(@suggestion) do |f| %>
+  <% if @suggestion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@suggestion.errors.count, "error") %> prohibited this suggestion from being saved:</h2>
+
+      <ul>
+      <% @suggestion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <label>主题</label><br>
+    <%= f.text_field :title %>
+  </div>
+    <label>内容</label><br>
+    <%= f.text_area :content, cols: "50", rows: "15"%>
+  </div>
+  <div class="field">
+    <label>姓名</label><br>
+    <%= f.text_field :name %>
+  </div>
+   <div>
+  <label>发送到:</label>
+    <%= f.select :send_to, Suggestion.send_to.values, {} %>  
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

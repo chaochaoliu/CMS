@@ -57,16 +57,6 @@
                         <td>  <%= @profile.marital_status %></td>
                       </tr>
 
-                       <tr>
-                        <td>签证类型</td>
-                        <td>  <%= @profile.visa_type %></td>
-                      </tr>
-
-                      <tr>
-                        <td>I20有效期至</td>
-                        <td>  <%= @profile.i20_expire_date %> </td>
-                      </tr>
-
                       <tr>
                         <td>家庭成员</td>
                         <td>  <%= @profile.family_member %></td>            
@@ -98,10 +88,7 @@
                         <td>小组长</td>
                         <td>  <%= @profile.group_leader %></td>            
                       </tr>
-                      <tr>
-                        <td>House Leader</td>
-                        <td>  <%= @profile.house_leader %></td>            
-                      </tr>
+
 
                       <tr>
                         <td><h4>其他信息</h4></td>
@@ -111,9 +98,7 @@
                         <td><%= @profile.nationality %></td>
                       </tr>
                       <tr>
-                      <td>家乡住址</td>
-                        <td><%= @profile.home_town %></td>
-                      </tr>
+
                       <tr>
                       <td>家乡联系人</td>
                         <td><%= @profile.home_town_contact_person %></td>
@@ -125,17 +110,14 @@
                        <td>是否是小组长</td>
                         <td><%= @profile.is_group_leader %></td>
                       </tr>
-                      <tr>
-                        <td>是否是House Leader</td>
-                        <td><%= @profile.is_house_leader %></td>
-                      </tr>
+
                       <tr>
                         <td>是否是牧师</td>
                         <td><%= @profile.is_pastor %></td>
                       </tr>
                       <tr>
-                        <td>自我介绍</td>
-                        <td><%= @profile.self_description %></td>
+                        <td>兴趣爱好</td>
+                        <td><%= @profile.hobby %></td>
                       </tr>      
                     </tbody>
                   </table>

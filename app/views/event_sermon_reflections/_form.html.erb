@@ -21,6 +21,11 @@
     <%= f.text_field :name %>
   </div>
 
+  <div class="field">
+    <label>隐私设置</label>
+    <%= f.select :privacy_level, EventSermonReflection.privacy_level.values, {} %>  
+  </div>
+
   <%= f.hidden_field :event_sermon_id, :value => @event_sermon.id %><br>
 
   <div class="actions">

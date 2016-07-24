@@ -4,10 +4,15 @@
 <table class="table table-user-information">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Preacher</th>
-      <th>Category</th>
-      <th>Date</th>
+      <th>题目</th>  
+      <th>片长</th>
+      <th>日期</th>
+      <th>讲道人</th>
+      <th>录音</th>
+      <th>纲要</th>
+      <th>类别</th>
+      <th>感想</th>
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,25 +21,33 @@
     <% @sermons.sunday_service.each do |sermon| %>
       <tr>
         <td><%= link_to sermon.title, sermon %></td>
-        <td><%= sermon.preacher %></td>
-        <td><%= sermon.category %></td>
+        <td><%= sermon.length %></td>
         <td><%= sermon.date %></td>
-        <td><%= link_to '编辑', edit_sermon_path(sermon) %><td>
+        <td><%= sermon.preacher %></td>
+        <td><%= link_to '<i class="fa fa-volume-up" aria-hidden="true"></i>'.html_safe %></td>
+        <td><%= link_to '<i class="fa fa-list-ul" aria-hidden="true"></i>'.html_safe %> </td>
+        <td><%= sermon.category %></td>
+        <td><%= link_to '写感想', new_sermon_reflection_path(:sermon_id => sermon.id) %></td>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 </div>
 
-<h4>周三礼拜</h4>
+<h4>周三晚礼拜</h4>
 <div class=" col-md-12 col-lg-12 "> 
 <table class="table table-user-information">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Preacher</th>
-      <th>Category</th>
-      <th>Date</th>
+      <th>题目</th>  
+      <th>片长</th>
+      <th>日期</th>
+      <th>讲道人</th>
+      <th>录音</th>
+      <th>纲要</th>
+      <th>类别</th>
+      <th>感想</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -43,10 +56,13 @@
     <% @sermons.wednesday_evening_service.each do |sermon| %>
       <tr>
         <td><%= link_to sermon.title, sermon %></td>
-        <td><%= sermon.preacher %></td>
-        <td><%= sermon.category %></td>
+        <td><%= sermon.length %></td>
         <td><%= sermon.date %></td>
-        <td><%= link_to '编辑', edit_sermon_path(sermon) %><td>
+        <td><%= sermon.preacher %></td>
+        <td><%= link_to '<i class="fa fa-volume-up" aria-hidden="true"></i>'.html_safe %></td>
+        <td><%= link_to '<i class="fa fa-list-ul" aria-hidden="true"></i>'.html_safe %> </td>
+        <td><%= sermon.category %></td>
+        <td><%= link_to '写感想', new_sermon_reflection_path(:sermon_id => sermon.id) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -58,10 +74,14 @@
 <table class="table table-user-information">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Preacher</th>
-      <th>Category</th>
-      <th>Date</th>
+       <th>题目</th>  
+      <th>片长</th>
+      <th>日期</th>
+      <th>讲道人</th>
+      <th>录音</th>
+      <th>纲要</th>
+      <th>类别</th>
+      <th>感想</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -70,11 +90,13 @@
     <% @sermons.morning_service.each do |sermon| %>
       <tr>
         <td><%= link_to sermon.title, sermon %></td>
-        <td><%= sermon.preacher %></td>
-        <td><%= sermon.category %></td>
+        <td><%= sermon.length %></td>
         <td><%= sermon.date %></td>
-        <td><%= link_to '编辑', edit_sermon_path(sermon) %><td>
-
+        <td><%= sermon.preacher %></td>
+        <td><%= link_to '<i class="fa fa-volume-up" aria-hidden="true"></i>'.html_safe %></td>
+        <td><%= link_to '<i class="fa fa-list-ul" aria-hidden="true"></i>'.html_safe %> </td>
+        <td><%= sermon.category %></td>
+        <td><%= link_to '写感想', new_sermon_reflection_path(:sermon_id => sermon.id) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -86,10 +108,15 @@
 <table class="table table-user-information">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Preacher</th>
-      <th>Category</th>
-      <th>Date</th>
+       <th>题目</th>  
+      <th>片长</th>
+      <th>日期</th>
+      <th>讲道人</th>
+      <th>录音</th>
+      <th>纲要</th>
+      <th>类别</th>
+      <th>感想</th>
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -98,10 +125,13 @@
     <% @sermons.prayer_meeting.each do |sermon| %>
       <tr>
         <td><%= link_to sermon.title, sermon %></td>
-        <td><%= sermon.preacher %></td>
-        <td><%= sermon.category %></td>
+        <td><%= sermon.length %></td>
         <td><%= sermon.date %></td>
-        <td><%= link_to '编辑', edit_sermon_path(sermon) %><td>
+        <td><%= sermon.preacher %></td>
+        <td><%= link_to '<i class="fa fa-volume-up" aria-hidden="true"></i>'.html_safe %></td>
+        <td><%= link_to '<i class="fa fa-list-ul" aria-hidden="true"></i>'.html_safe %> </td>
+        <td><%= sermon.category %></td>
+        <td><%= link_to '写感想', new_sermon_reflection_path(:sermon_id => sermon.id) %></td>
 
       </tr>
     <% end %>
@@ -110,4 +140,3 @@
 </div>
 <br>
 
-<%= link_to '新建讲道', new_sermon_path %>

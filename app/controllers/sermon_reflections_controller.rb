@@ -37,6 +37,10 @@ class SermonReflectionsController < ApplicationController
     @sermon_reflection.sermon = Sermon.find(sermon_reflection_params[:sermon_id])
     respond_to do |format|
       if @sermon_reflection.save
+        if @sermon_reflection.privacy_level == 1 || @event_sermon_reflection.privacy_level == 2
+          @pastor_email = ChurchEmail.find_by(:position => 1)
+          UserMailer.email_sermon_reflection_to_pastor(@pastor_email, @sermon_reflection).deliver_later
+        end
         format.html { redirect_to @sermon_reflection.sermon, notice: 'Sermon reflection was successfully created.' }
         format.json { render :show, status: :created, location: @sermon_reflection }
       else
@@ -78,6 +82,6 @@ class SermonReflectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sermon_reflection_params
-      params.require(:sermon_reflection).permit(:content,:sermon_id)
+      params.require(:sermon_reflection).permit(:content,:sermon_id,:title,:name)
     end
 end

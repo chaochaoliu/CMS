@@ -3,6 +3,7 @@ class EventRegistration < ActiveRecord::Base
   belongs_to :event
   has_paper_trail
   extend Enumerize
+  has_paper_trail
 
   validates :user_id, presence: true, numericality: true
   validates :event_id, presence: true, numericality: true

@@ -32,6 +32,10 @@ class EventSermonReflectionsController < ApplicationController
 
     respond_to do |format|
       if @event_sermon_reflection.save
+        if @event_sermon_reflection.privacy_level == 1 || @event_sermon_reflection.privacy_level == 2
+          @pastor_email = ChurchEmail.find_by(:position => 1)
+          UserMailer.email_to_pastor(@pastor_email, @event_sermon_reflection).deliver_later
+        end
         format.html { redirect_to @event_sermon_reflection.event_sermon, notice: 'Event sermon reflection was successfully created.' }
         format.json { render :show, status: :created, location: @event_sermon_reflection }
       else
@@ -73,6 +77,6 @@ class EventSermonReflectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_sermon_reflection_params
-      params.require(:event_sermon_reflection).permit(:name, :content, :event_sermon_id)
+      params.require(:event_sermon_reflection).permit(:name,:title,:content, :event_sermon_id)
     end
 end

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   has_many :event_registrations, dependent: :destroy
   has_many :events, through: :event_registrations
-  has_many :comments, dependent: :destroy
+  has_many :news_comments, dependent: :destroy
   has_many :sermon_reflections, dependent: :destroy
   has_many :sermon_sign_ins, dependent: :destroy
   has_many :event_sermon_reflections, dependent: :destroy
@@ -16,7 +16,6 @@ class User < ActiveRecord::Base
   has_paper_trail
 
   validates :email, presence: true
-  validates :role_id, presence: true, numericality: true
 
   def set_default_role
     self.role_id ||= 1

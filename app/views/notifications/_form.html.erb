@@ -27,6 +27,15 @@
     <%= f.label :publish_date %><br>
     <%= f.datetime_select :publish_date %>
   </div>
+  <div class="field">
+              <label>图片</label>
+              <%= f.file_field :image %>
+              <% if f.object.image? %>
+                <%= image_tag f.object.image.thumb.url %>
+                <%= f.label :remove_image %>
+                <%= f.check_box :remove_image %> 
+              <% end %>
+           </div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -14,7 +14,6 @@
 </head>
 
 <body>
-  <p id="notice"><%= notice %></p>
 
      <div id="wrapper">
 <!-- Sidebar -->
@@ -34,7 +33,7 @@
                   <%= link_to '<i class="fa fa-bell"></i>通知'.html_safe, notifications_path %>
                 </li>
                 <li>
-                  <%= link_to '<i class="fa fa-newspaper-o" aria-hidden="true"></i>新闻'.html_safe, news_index_path %>
+                  <%= link_to '<i class="fa fa-newspaper-o" aria-hidden="true"></i>周报'.html_safe, news_index_path %>
                 </li>
                 <li>
                   <%= link_to '<i class="fa fa-list-ul"></i>证道'.html_safe, sermons_path %>                
@@ -60,8 +59,10 @@
                     
                 </li>
                 <li>
-                  <%= link_to '<i class="fa fa-newspaper-o" aria-hidden="true"></i>提交新闻'.html_safe, new_news_path %> 
-                    
+                  <%= link_to '<i class="fa fa-newspaper-o" aria-hidden="true"></i>提交新闻'.html_safe, new_news_path %>      
+                </li>
+                <li>
+                  <%= link_to '<i class="fa fa-envelope-o" aria-hidden="true"></i>联系我们'.html_safe, new_suggestion_path %>      
                 </li>
                 <li>
                   <%= link_to '<i class="fa fa-sign-out"></i>登出'.html_safe, destroy_user_session_path, method: :delete %> 
@@ -87,7 +88,7 @@
             <div class="row">
                
                 <div class="col-lg-12 maincontent">                  
-                      
+                 <p id="notice"><%= notice %></p>    
                         <%= yield %>
                 </div>
             </div>

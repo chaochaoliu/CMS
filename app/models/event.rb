@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
   validates :description, presence: true
   validates :ministry, presence: true
   validates :max_number_of_people, presence: true
-  validates :deadline_of_appication, presence: true, 
+  validates :deadline_of_appication, presence: true
   validate :deadline_of_appication_cannot_be_in_the_past
   validates :name, numericality: true
 

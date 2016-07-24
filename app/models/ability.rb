@@ -8,15 +8,40 @@ class Ability
       if user.superadmin?
         can :manage, :all             # allow superadmins to do anything
       elsif user.staff?
-        can :manage, [Profile, Message, EventRegistration,PaperTrail::Version, Event, Notification, Sermon]  
+        can :manage, [NewsComment, EventNotice, Profile, Message, EventRegistration,
+                      PaperTrail::Version, Event, Notification, Sermon,
+                      EventSermon, EventSermonReflection, News, SermonReflection,
+                      SermonSignIn,DailyScripture]  
         can :manage, User, :role_id => 1..2
         can :manage, Role, :id => 1..2
       end
     elsif user.approved?
-      can :manage, [Event, EventRegistration, News]
-        can [:read, :update], Profile do |profile|
-          profile.try(:user) == user
-        end  
+      can :read, [Event, EventNotice, EventSermon, Message, Notification, Sermon,DailyScripture]
+      can [:read, :update], Profile do |profile|
+        profile.try(:user) == user
+      end  
+      can [:read, :create], NewsComment  
+        can [:update, :delete], NewsComment do |news_comment|
+          news_comment.try(:user) == user
+        end   
+      can :create, EventRegistration  
+        can [:read, :update], EventRegistration do |event_registration|
+          event_registration.try(:user) == user
+        end
+      can :create, EventSermonReflection  
+        can [:read, :update], EventSermonReflection do |event_sermon_reflection|
+          event_sermon_reflection.try(:user) == user || event_sermon_reflection.try(:privacy_level) == 1
+        end
+      can [:read, :create], News 
+      can :create, SermonReflection  
+        can [:read, :update], SermonReflection do |sermon_reflection|
+          sermon_reflection.try(:user) == user || sermon_reflection.try(:privacy_level) == 1
+        end 
+      can [:create], SermonSignIn 
+      can :read, SermonSignIn do |sermon_sign_in|
+          sermon_sign_in.try(:user) == user
+        end
+
     else
         can :create, Profile  
         can [:read, :update], Profile do |profile|
