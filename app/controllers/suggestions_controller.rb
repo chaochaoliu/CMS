@@ -32,10 +32,10 @@ class SuggestionsController < ApplicationController
     respond_to do |format|
       if @suggestion.save
         if @suggestion.send_to == 1 
-          @pastor_email = ChurchEmail.find_by(:position => 1)
+          @pastor_email = ChurchStaff.find_by(:position => 1)
           UserMailer.email_suggestion_to_pastor(@pastor_email, @suggestion).deliver_later
         elsif @suggestion.send_to == 2
-          @staff_email = ChurchEmail.find_by(:position => 2)
+          @staff_email = ChurchStaff.find_by(:position => 2)
           UserMailer.email_suggestion_to_staff(@staff_email, @suggestion).deliver_later
         end
         format.html { redirect_to thank_you_for_suggestion_path, notice: 'Suggestion was successfully created.' }

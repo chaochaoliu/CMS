@@ -14,9 +14,9 @@ class UserMailer < ApplicationMailer
       mail(to: receiver, subject: @message.subject) 
   end
 
-   def email_sermon_reflection_to_pastor(pastor_email, sermon_reflection)
+   def email_sermon_reflection_to_preacher(preacher, sermon_reflection)
       @sermon_reflection = sermon_reflection
-      mail(to: pastor_email.email, subject: @sermon_reflection.title) 
+      mail(to: preacher.email, subject: @sermon_reflection.title) 
   end
 
   def email_suggestion_to_pastor(pastor_email, suggestion)

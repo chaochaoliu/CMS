@@ -22,7 +22,7 @@
       <tr>
         <td><%= link_to sermon.title, sermon %></td>
         <td><%= sermon.length %></td>
-        <td><%= sermon.date %></td>
+        <td><%= sermon.date.to_date %></td>
         <td><%= sermon.preacher %></td>
         <td><%= link_to '<i class="fa fa-volume-up" aria-hidden="true"></i>'.html_safe %></td>
         <td><%= link_to '<i class="fa fa-list-ul" aria-hidden="true"></i>'.html_safe %> </td>
@@ -57,7 +57,7 @@
       <tr>
         <td><%= link_to sermon.title, sermon %></td>
         <td><%= sermon.length %></td>
-        <td><%= sermon.date %></td>
+        <td><%= sermon.date.to_date %></td>
         <td><%= sermon.preacher %></td>
         <td><%= link_to '<i class="fa fa-volume-up" aria-hidden="true"></i>'.html_safe %></td>
         <td><%= link_to '<i class="fa fa-list-ul" aria-hidden="true"></i>'.html_safe %> </td>
@@ -91,7 +91,7 @@
       <tr>
         <td><%= link_to sermon.title, sermon %></td>
         <td><%= sermon.length %></td>
-        <td><%= sermon.date %></td>
+        <td><%= sermon.date.to_date %></td>
         <td><%= sermon.preacher %></td>
         <td><%= link_to '<i class="fa fa-volume-up" aria-hidden="true"></i>'.html_safe %></td>
         <td><%= link_to '<i class="fa fa-list-ul" aria-hidden="true"></i>'.html_safe %> </td>
@@ -126,7 +126,7 @@
       <tr>
         <td><%= link_to sermon.title, sermon %></td>
         <td><%= sermon.length %></td>
-        <td><%= sermon.date %></td>
+        <td><%= sermon.date.to_date %></td>
         <td><%= sermon.preacher %></td>
         <td><%= link_to '<i class="fa fa-volume-up" aria-hidden="true"></i>'.html_safe %></td>
         <td><%= link_to '<i class="fa fa-list-ul" aria-hidden="true"></i>'.html_safe %> </td>
@@ -139,4 +139,6 @@
 </table>
 </div>
 <br>
+<%= link_to "New Sermon", new_sermon_path %>
+
 

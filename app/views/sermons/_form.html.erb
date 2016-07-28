@@ -24,7 +24,8 @@
   </div>
   <div class="field">
     <%= f.label :preacher %><br>
-    <%= f.text_field :preacher %>
+    <%= collection_select(:sermon, :preacher_id, Preacher.all, :id, :name, :prompt => 'Please select preacher') %>
+
   </div>
   <div class="field">
     <%= f.label :scripture %><br>
@@ -44,3 +45,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+

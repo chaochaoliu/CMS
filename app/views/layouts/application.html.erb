@@ -21,7 +21,7 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <div class="portrait">
-                        <%= image_tag "portrait_03.jpeg" %>
+                        <%= image_tag current_user.profile.image %>
                     </div>
                     <div class="name"><p>Chao Liu</p></div>
                 </li>
@@ -35,6 +35,7 @@
                 <li>
                   <%= link_to '<i class="fa fa-newspaper-o" aria-hidden="true"></i>周报'.html_safe, news_index_path %>
                 </li>
+
                 <li>
                   <%= link_to '<i class="fa fa-list-ul"></i>证道'.html_safe, sermons_path %>                
                 </li>

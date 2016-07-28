@@ -33,8 +33,8 @@ class EventSermonReflectionsController < ApplicationController
     respond_to do |format|
       if @event_sermon_reflection.save
         if @event_sermon_reflection.privacy_level == 1 || @event_sermon_reflection.privacy_level == 2
-          @pastor_email = ChurchEmail.find_by(:position => 1)
-          UserMailer.email_to_pastor(@pastor_email, @event_sermon_reflection).deliver_later
+          @preacher = @event_sermon_reflection.event_sermon.preacher
+          UserMailer.email_sermon_reflection_to_preacher(@preacher, @event_sermon_reflection).deliver_later
         end
         format.html { redirect_to @event_sermon_reflection.event_sermon, notice: 'Event sermon reflection was successfully created.' }
         format.json { render :show, status: :created, location: @event_sermon_reflection }

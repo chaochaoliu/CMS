@@ -11,7 +11,7 @@ class Ability
         can :manage, [NewsComment, EventNotice, Profile, Message, EventRegistration,
                       PaperTrail::Version, Event, Notification, Sermon,
                       EventSermon, EventSermonReflection, News, SermonReflection,
-                      SermonSignIn,DailyScripture]  
+                      SermonSignIn,DailyScripture,Preacher]  
         can :manage, User, :role_id => 1..2
         can :manage, Role, :id => 1..2
       end

@@ -44,12 +44,12 @@
                       
                       <tr>
                         <td>出生日期</td>
-                        <td><%= @profile.date_of_birth %></td>
+                        <td><%= @profile.date_of_birth.to_date %></td>
                       </tr>
 
                       <tr>
                         <td>坚信日期</td>
-                        <td><%= @profile.time_to_become_member %></td>
+                        <td><%= @profile.time_to_become_member.to_date %></td>
                       </tr>
 
                       <tr>

@@ -1,5 +1,6 @@
 class EventSermon < ActiveRecord::Base
   belongs_to :event
+  belongs_to :preacher
   has_paper_trail
   has_many :event_sermon_reflections, dependent: :destroy
 

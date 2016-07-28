@@ -15,7 +15,7 @@
     <% @event_sermons.each do |event_sermon| %>
       <tr>
         <td><%= link_to event_sermon.title, event_sermon %></td>
-        <td><%= event_sermon.preacher %></td>
+        <td><%= event_sermon.preacher.name %></td>
         <td><%= event_sermon.sermon_date %></td>
         <td><%= link_to 'Edit', edit_event_sermon_path(event_sermon,:event_id => event_sermon.event.id) %></td>
         <td><%= link_to 'Destroy', event_sermon, method: :delete, data: { confirm: 'Are you sure?' } %></td> 

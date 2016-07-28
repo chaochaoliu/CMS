@@ -1,22 +1,22 @@
 
 <div class="text-center ">
-<h3>Thank you for register for Gratia Church online system! </h3>
+<h3>感谢您注册三藩中文教会网上平台！</h3>
 </div>
 
 <div class="text-center">
-<h3> We'll review your profile and send email to you in one week.</h3>
+<h3> 工作人员将会在一周内审核您的资料并回复您。</h3>
 </div>
 
 <div class="text-center">
-<h3> If you have any questions,please contact gratiachurch@gmail.com</h3>
+<h3> 如果您有任何问题请联系 gratiapresbyteriancn@gmail.com </h3>
 </div>
 
 <div class="text-center">
  <%= 
- link_to 'Edit My File', edit_profile_path(current_user.profile) 
+ link_to '修改我的资料', edit_profile_path(current_user.profile) 
  %>
 
- | <%= link_to 'Signin with another Account', destroy_user_session_path, method: :delete %>
+ | <%= link_to '退出', destroy_user_session_path, method: :delete %>
 </div>
 
 

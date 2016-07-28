@@ -16,7 +16,7 @@
       <tr>
         <td><%= link_to my_event.name, event_detail_path(:event_id => my_event.id) %></td>
         <td><%= my_event.ministry %></td>
-        <td><%= my_event.start_time %></td>
+        <td><%= my_event.start_time.to_date %></td>
 
       </tr>
     <% end %>

@@ -3,6 +3,7 @@ class Sermon < ActiveRecord::Base
   mount_uploader :sermon_audio, SermonUploader
   has_many :sermon_reflections, dependent: :destroy
   has_many :sermon_sign_ins, dependent: :destroy
+  belongs_to :preacher
   has_paper_trail
   validates :title, presence: true
   validates :preacher, presence: true
@@ -18,4 +19,5 @@ class Sermon < ActiveRecord::Base
                             "早礼拜" => 2 , 
                             "祷告会" => 3,
                        "周三晚礼拜" => 4}, default: "早礼拜"
+
 end

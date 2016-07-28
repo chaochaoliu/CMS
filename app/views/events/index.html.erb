@@ -22,7 +22,7 @@
         <td><%= event.ministry %></td>
         <td><%= event.target_people %></td>
         <td><%= event.remaining_reservations %></td>
-        <td><%= event.deadline_of_appication %></td>
+        <td><%= event.deadline_of_appication.to_date %></td>
         <td>
           <%unless EventRegistration.where(:user_id => current_user.id, :event_id => event.id).any? %>未申请
           <%else%>
