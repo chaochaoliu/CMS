@@ -42,6 +42,14 @@ Rails.application.routes.draw do
   get 'calendar' => 'events#calendar', :as => 'calendar'
   get 'my_reflections' => 'sermon_reflections#my_reflections', :as => 'my_reflections'
   get 'thank_you' => 'suggestions#thank_you_for_suggestion', :as => 'thank_you_for_suggestion'
+  get 'thank_you_news' => 'news#thank_you_for_submitting_news', :as => 'thank_you_for_submitting_news'
+  get 'service_review' => 'news#service_review', :as => 'service_review'
+  get 'good_news' => 'news#good_news', :as => 'good_news'
+  get 'testimony' => 'news#testimony', :as => 'testimony'
+  get 'sunday_service' => 'sermons#sunday_service', :as => 'sunday_service'
+  get 'morning_service' => 'sermons#morning_service', :as => 'morning_service'
+  get 'wednesday_service' => 'sermons#wednesday_service', :as => 'wednesday_service'
+  get 'prayer_meeting' => 'sermons#prayer_meeting', :as => 'prayer_meeting'
 
 
 

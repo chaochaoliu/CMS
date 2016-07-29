@@ -21,6 +21,22 @@ class SermonsController < ApplicationController
   def edit
   end
 
+  def sunday_service
+    @sunday_services = Sermon.sunday_service
+  end
+
+  def morning_service
+    @morning_services = Sermon.morning_service
+  end
+
+  def wednesday_service
+    @wednesday_services = Sermon.wednesday_evening_service
+  end
+
+  def prayer_meeting
+    @prayer_meetings= Sermon.prayer_meeting
+  end
+
   # POST /sermons
   # POST /sermons.json
   def create

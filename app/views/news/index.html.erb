@@ -1,13 +1,15 @@
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-light " style="background-color: #e3f2fd;">
   <ul class="nav navbar-nav">
     <li class="nav-item active">
-      <a class="nav-link" href="#">礼拜回顾 <span class="sr-only">(current)</span></a>
+      <%= link_to "礼拜回顾", service_review_path,  class: "nav-link"%>
+<!-- 
+      <a class="nav-link" href="#">礼拜回顾 <span class="sr-only">(current)</span></a> -->
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">恩典见证</a>
+      <%= link_to "恩典见证", testimony_path,  class: "nav-link"%>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">好消息</a>
+      <%= link_to "好消息", good_news_path,  class: "nav-link"%>
     </li>
   </ul>
 </nav>
@@ -37,30 +39,7 @@
 </table>
 </div>
 <br><br>
-<h4>心灵医治</h4>
- <div class=" col-md-12 col-lg-12 "> 
-<table class="table table-user-information">
-  <thead>
-    <tr>
-      <th>主题</th>
-      <th>作者</th>
-      <th>日期</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @news.healing_heart.each do |news| %>
-      <tr>
-        <td><%= link_to news.title, news_path(news) %></td>
-        <td><%= news.author %></td>
-        <td><%= news.date.to_date %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
-<br><br>
 <h4>恩典见证</h4>
  <div class=" col-md-12 col-lg-12 "> 
 <table class="table table-user-information">
@@ -109,28 +88,5 @@
 </table>
 </div>
 <br><br>
-<h4>其他</h4>
- <div class=" col-md-12 col-lg-12 "> 
-<table class="table table-user-information">
-  <thead>
-    <tr>
-      <th>主题</th>
-      <th>作者</th>
-      <th>日期</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @news.others.each do |news| %>
-      <tr>
-        <td><%= link_to news.title, news_path(news) %></td>
-        <td><%= news.author %></td>
-        <td><%= news.date.to_date %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
-<br><br>
-<%= link_to '提交新闻', new_news_path %> 
+<%= link_to '提交新闻素材', new_news_path %> 

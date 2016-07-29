@@ -25,10 +25,9 @@ class NewsController < ApplicationController
   # POST /news.json
   def create
     @news = News.new(news_params)
-
     respond_to do |format|
       if @news.save
-        format.html { redirect_to @news, notice: 'News was successfully created.' }
+        format.html { redirect_to thank_you_for_submitting_news_path }
         format.json { render :show, status: :created, location: @news }
       else
         format.html { render :new }
@@ -59,6 +58,21 @@ class NewsController < ApplicationController
       format.html { redirect_to news_index_url, notice: 'News was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def thank_you_for_submitting_news
+  end
+
+  def service_review
+    @service_reviews = News.service_review
+  end
+
+  def testimony
+    @testimonys = News.grace_and_testimony
+  end
+
+  def good_news
+    @good_news = News.good_news
   end
 
   private

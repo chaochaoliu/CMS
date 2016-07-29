@@ -1,21 +1,21 @@
 
 <p>
-  <strong>Title:</strong>
+  <strong>题目:</strong>
   <%= @news.title %>
 </p>
 
 <p>
-  <strong>Author:</strong>
+  <strong>作者:</strong>
   <%= @news.author %>
 </p>
 
 <p>
-  <strong>Date:</strong>
+  <strong>日期:</strong>
   <%= @news.date %>
 </p>
 
 <p>
-  <strong>Content:</strong>
+  <strong>内容:</strong>
   <%= @news.content %>
 </p>
 
@@ -23,7 +23,7 @@
     <%= image_tag @news.image.url%>
 </div>
 <br>
-<%= link_to '编辑', edit_news_path(@news) %><br>
+
 <%= link_to '后退', news_index_path %><br>
 <%= link_to '评论', new_news_comment_path(:news_id => @news.id) %>
 <br>

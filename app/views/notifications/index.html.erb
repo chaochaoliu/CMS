@@ -17,9 +17,11 @@
           <li>
             <%= notification.created_at%> <br>
             <p><%= notification.content %></p>
-            <div > 
-                <%= image_tag notification.image.url%>
-            </div>
+          <!--   <% if !notification.image.nil? %>
+            <div> 
+                <%= image_tag notification.image.url, size: "500x300"%>
+            </div> -->
+            <%end%>
           </li>
         <%end%>
     </ul>

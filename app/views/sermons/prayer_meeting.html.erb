@@ -1,0 +1,46 @@
+<nav class="navbar navbar-light " style="background-color: #e3f2fd;">
+  <ul class="nav navbar-nav">
+    <li class="nav-item active">
+      <%= link_to "主日证道", sunday_service_path,  class: "nav-link"%>
+<!-- 
+      <a class="nav-link" href="#">礼拜回顾 <span class="sr-only">(current)</span></a> -->
+    </li>
+    <li class="nav-item">
+      <%= link_to "早礼拜", morning_service_path,  class: "nav-link"%>
+    </li>
+    <li class="nav-item">
+      <%= link_to "祷告会", prayer_meeting_path,  class: "nav-link"%>
+    </li>
+    <li class="nav-item">
+      <%= link_to "周三晚礼拜", wednesday_service_path,  class: "nav-link"%>
+    </li>
+  </ul>
+</nav>
+<h4>祷告会</h4>
+<div class=" col-md-12 col-lg-12 "> 
+<table class="table table-user-information">
+  <thead>
+    <tr>
+      <th>题目</th>  
+      <th>片长</th>
+      <th>日期</th>
+      <th>讲道人</th>
+      <th>类别</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @prayer_meetings.each do |prayer_meeting| %>
+      <tr>
+        <td><%= link_to prayer_meeting.title, prayer_meeting %></td>
+        <td><%= prayer_meeting.length %></td>
+        <td><%= prayer_meeting.date.to_date %></td>
+        <td><%= prayer_meeting.preacher.name %></td>
+        <td><%= prayer_meeting.category %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

@@ -30,10 +30,7 @@
       <th>片长</th>
       <th>日期</th>
       <th>讲道人</th>
-      <th>录音</th>
-      <th>纲要</th>
       <th>类别</th>
-      <th>感想</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -44,12 +41,8 @@
         <td><%= link_to sermon.title, sermon %></td>
         <td><%= sermon.length %></td>
         <td><%= sermon.date.to_date %></td>
-        <td><%= sermon.preacher %></td>
-        <td><%= link_to '<i class="fa fa-volume-up" aria-hidden="true"></i>'.html_safe %></td>
-        <td><%= link_to '<i class="fa fa-list-ul" aria-hidden="true"></i>'.html_safe %> </td>
-        <td><%= sermon.category %></td>
-        <td><%= link_to '写感想', new_sermon_reflection_path(:sermon_id => sermon.id) %></td>
-        
+        <td><%= sermon.preacher.name %></td>
+        <td><%= sermon.category %></td>      
     <% end %>
   </tbody>
 </table>
@@ -61,6 +54,7 @@
   <thead>
     <tr>
       <th>题目</th>
+      <th>发布者</th>
       <th>发布日期</th>
       <th colspan="3"></th>
     </tr>
@@ -70,8 +64,8 @@
     <% @latest_notifications.each do |latest_notification| %>
       <tr>
         <td><%= link_to latest_notification.title, latest_notification %></td>
-        <td><%= latest_notification.created_at.to_date %></td>
-        
+        <td><%= latest_notification.publisher %></td>
+        <td><%= latest_notification.created_at.to_date %></td>      
     <% end %>
   </tbody>
 </table>
@@ -83,6 +77,7 @@
   <thead>
     <tr>
       <th>题目</th>
+      <th>作者</th>
       <th>发布日期</th>
       <th colspan="3"></th>
     </tr>
@@ -92,6 +87,7 @@
     <% @latest_news.each do |latest_news| %>
       <tr>
         <td><%= link_to latest_news.title, latest_news %></td>
+        <td><%= latest_news.author %></td>
         <td><%= latest_news.created_at.to_date %></td>
         
     <% end %>

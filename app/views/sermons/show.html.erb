@@ -1,54 +1,41 @@
 <p>
-  <strong>Title:</strong>
+  <strong>题目:</strong>
   <%= @sermon.title %>
 </p>
 
 <p>
-  <strong>Date:</strong>
-  <%= @sermon.date %>
-</p>
-
-<p>
-  <strong>Preacher:</strong>
-  <%= @sermon.preacher %>
-</p>
-<p>
-  <strong>Scripture:</strong>
-  <%= @sermon.scripture %>
-</p>
-
-<audio src="<%= audio_path 'test.mp3'%>" type="audio/mpeg" controls>
-    Your browser does not support the audio element.
-</audio>
-
-<p>
-  <strong>Content:</strong>
-  <%= @sermon.content %>
-</p>
-
-<p>
-  <strong>Category:</strong>
+  <strong>类别:</strong>
   <%= @sermon.category %>
 </p>
 
-  <strong>Audio:</strong>
+<p>
+  <strong>日期:</strong>
+  <%= @sermon.date.to_date %>
+</p>
 
+<p>
+  <strong> 讲道人:</strong>
+  <%= @sermon.preacher.name %>
+</p>
+<p>
+  <strong>经文:</strong>
+  <%= @sermon.scripture %>
+</p>
+
+<strong> 音频:</strong>
+<audio src="<%= audio_path 'test.mp3'%>" type="audio/mpeg" controls>
+    Your browser does not support the audio element.
+</audio>
+<br><br>
+<p>
+  <strong>纲要:</strong>
+  <%= @sermon.content %>
+</p>
 
 <br><br>
-<%= link_to 'Edit', edit_sermon_path(@sermon) %> |
-<%= link_to 'Back', sermons_path %><br>
 <%= link_to '签到', sermon_sign_ins_path(:sermon_id => @sermon.id,:user_id => current_user.id), method: :post %>
 
 <%= link_to '提交感想', new_sermon_reflection_path(:sermon_id => @sermon.id) %>
-<br><br>
-<label>感想:</label><br>
-<% @sermon.sermon_reflections.each do |sermon_reflection|%>
-<%= sermon_reflection.user.profile.full_name %>
-<br>
-<%= sermon_reflection.content %>
-<br><br>
-<%end%>
-
 
 
 
