@@ -43,6 +43,8 @@ gem 'mail_form'
 
 gem "simple_calendar", "~> 2.0"
 
+gem 'kaminari'
+
 
 
 # Use ActiveModel has_secure_password

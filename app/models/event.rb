@@ -14,6 +14,8 @@ class Event < ActiveRecord::Base
   has_many :event_sermons, dependent: :destroy
   has_paper_trail
 
+  paginates_per 3
+
 
   enumerize :status, in: { 
                        "最新" => 1,

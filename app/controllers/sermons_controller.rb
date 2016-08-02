@@ -26,19 +26,19 @@ class SermonsController < ApplicationController
   end
 
   def sunday_service
-    @sunday_services = Sermon.sunday_service
+    @sunday_services = Sermon.sunday_service.order(:start_time).page params[:page]
   end
 
   def morning_service
-    @morning_services = Sermon.morning_service
+    @morning_services = Sermon.morning_service.order(:start_time).page params[:page]
   end
 
   def wednesday_service
-    @wednesday_services = Sermon.wednesday_evening_service
+    @wednesday_services = Sermon.wednesday_evening_service.order(:start_time).page params[:page]
   end
 
   def prayer_meeting
-    @prayer_meetings = Sermon.prayer_meeting
+    @prayer_meetings = Sermon.prayer_meeting.order(:start_time).page params[:page]
   end
 
   # POST /sermons

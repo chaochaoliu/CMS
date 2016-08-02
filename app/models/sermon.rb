@@ -28,4 +28,6 @@ class Sermon < ActiveRecord::Base
                        "最近" => 2,
                        "过期" => 3}, default: "过期"
 
+  paginates_per 3
+
 end

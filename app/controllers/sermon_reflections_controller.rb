@@ -62,6 +62,12 @@ class SermonReflectionsController < ApplicationController
     @sermon = 
     respond_to do |format|
       if @sermon_reflection.update(sermon_reflection_params)
+
+        if @sermon_reflection.privacy_level == 2
+          @preacher = @sermon_reflection.sermon.preacher
+          UserMailer.email_sermon_reflection_to_preacher(@preacher, @sermon_reflection).deliver_later
+        end
+
         format.html { redirect_to @sermon_reflection.sermon, notice: 'Sermon reflection was successfully updated.' }
         format.json { render :show, status: :ok, location: @sermon_reflection }
       else
@@ -89,6 +95,6 @@ class SermonReflectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sermon_reflection_params
-      params.require(:sermon_reflection).permit(:content,:sermon_id,:title,:name)
+      params.require(:sermon_reflection).permit(:content,:sermon_id,:title,:name, :privacy_level)
     end
 end

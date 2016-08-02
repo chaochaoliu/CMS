@@ -228,6 +228,7 @@ DEPENDENCIES
   enumerize
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   letter_opener
   mail_form
   mini_magick (~> 4.3)

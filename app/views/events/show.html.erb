@@ -25,10 +25,6 @@
   <strong>人数限制</strong><br>
   <%= @event.max_number_of_people %>
 </p>
-<p>
-  <strong>剩余席位</strong><br>
-  <%= @event.remaining_reservations %>
-</p>
 
 <% if @event_registration.nil? %>
 <%= link_to '申请参加', new_event_registration_path(:event_id => @event.id) %>

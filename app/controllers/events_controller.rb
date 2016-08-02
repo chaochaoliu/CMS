@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.order(:start_time).page params[:page]
 
   end
 
@@ -29,7 +29,7 @@ class EventsController < ApplicationController
 
   def my_events
     @my_events = current_user.events
-    @my_approved_events = @my_events.where("approved = ?", '2')
+    @my_approved_events = @my_events.where("approved = ?", '2').order(:start_time).page params[:page]
   end
 
   def event_detail
@@ -85,6 +85,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :start_time, :description,:ministry, :max_number_of_people, :target_people, :remaining_reservations, :deadline_of_appication)
+      params.require(:event).permit(:name, :start_time, :end_time, :description,:ministry, :max_number_of_people, :target_people, :remaining_reservations, :deadline_of_appication)
     end
 end
