@@ -1,11 +1,5 @@
 <div class="container">
       <div class="row">
-      <div class="col-md-4  toppad  pull-right col-md-offset-5 ">
-          <%= link_to 'Edit Profile', edit_profile_path(@profile) %> |
-          <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
-       <br>
-       <%= Time.now  %>
-      </div>
         <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-3 toppad" >
    
           <div class="panel panel-info">
@@ -36,6 +30,7 @@
                       
                       <tr>
                         <td><h4>基本资料</h4></td>
+                        
                       </tr>
                       <tr>
                         <td>性别</td>
@@ -89,7 +84,6 @@
                         <td>  <%= @profile.group_leader %></td>            
                       </tr>
 
-
                       <tr>
                         <td><h4>其他信息</h4></td>
                       </tr>
@@ -118,7 +112,11 @@
                       <tr>
                         <td>兴趣爱好</td>
                         <td><%= @profile.hobby %></td>
-                      </tr>      
+                      </tr>  
+                      <tr>
+                        <td>编辑我的资料</td>
+                        <td><%= link_to '编辑我的资料', edit_profile_path(@profile) %></td>
+                      </tr>    
                     </tbody>
                   </table>
                 </div>

@@ -10,7 +10,7 @@
 
 <p>
   <strong>日期:</strong>
-  <%= @sermon.date.to_date %>
+  <%= @sermon.start_time.to_date %>
 </p>
 
 <p>
@@ -33,9 +33,24 @@
 </p>
 
 <br><br>
+<% if @sermon_sign_in.nil? %>
 <%= link_to '签到', sermon_sign_ins_path(:sermon_id => @sermon.id,:user_id => current_user.id), method: :post %>
+<% else %>
+  已签到
+<% end %>
 
-<%= link_to '提交感想', new_sermon_reflection_path(:sermon_id => @sermon.id) %>
+<br><br>
 
+<p>
+  <% if !@my_sermon_reflection.nil? %>
+  <strong>我的感想:</strong><br>
+  <%= @my_sermon_reflection.content %><br>
+  <%= link_to '编辑感想', edit_sermon_reflection_path(@my_sermon_reflection, :sermon_id => @sermon.id) %>
+  <%else%>
+  <%= link_to '提交感想', new_sermon_reflection_path(:sermon_id => @sermon.id) %>
+  <%end%>
+</p>
+
+<%= link_to '后退', sunday_service_path %>
 
 

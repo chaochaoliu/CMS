@@ -11,7 +11,7 @@
 
 <p>
   <strong>日期:</strong>
-  <%= @news.date %>
+  <%= @news.date.to_date %>
 </p>
 
 <p>
@@ -25,12 +25,4 @@
 <br>
 
 <%= link_to '后退', news_index_path %><br>
-<%= link_to '评论', new_news_comment_path(:news_id => @news.id) %>
-<br>
-<br>
-<% @news.news_comments.each do |comment|%>
-<%= comment.user.profile.full_name %><br>
-<%= comment.content %>
 
-<br>
-<%end%>

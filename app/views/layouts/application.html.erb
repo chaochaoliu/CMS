@@ -30,9 +30,6 @@
                   <%= link_to '<i class="fa fa-home" aria-hidden="true"></i> 主页'.html_safe, root_path %>
                 </li>
                 <li>
-                  <%= link_to '<i class="fa fa-bell"></i>通知'.html_safe, notifications_path %>
-                </li>
-                <li>
                   <%= link_to '<i class="fa fa-newspaper-o" aria-hidden="true"></i>周报'.html_safe, service_review_path %>
                 </li>
 
@@ -43,24 +40,10 @@
                   <%= link_to '<i class="fa fa-users" aria-hidden="true"></i>活动'.html_safe, events_path %>  
                     
                 </li>
-                <li>
-                  <%= link_to '<i class="fa fa-calendar" aria-hidden="true"></i></i>日历'.html_safe, calendar_path %>                  
-                </li>
                 
                 <li>
                   <%= link_to '<i class="fa fa-user" aria-hidden="true"></i>我的资料'.html_safe, current_user.profile %> 
                     
-                </li>
-                <li>
-                  <%= link_to '<i class="fa fa-users" aria-hidden="true"></i>我的活动'.html_safe, my_events_path %> 
-                    
-                </li>
-                <li>
-                  <%= link_to '<i class="fa fa-comments-o" aria-hidden="true"></i>我的感想'.html_safe, my_reflections_path %> 
-                    
-                </li>
-                <li>
-                  <%= link_to '<i class="fa fa-newspaper-o" aria-hidden="true"></i>提交新闻'.html_safe, new_news_path %>      
                 </li>
                 <li>
                   <%= link_to '<i class="fa fa-envelope-o" aria-hidden="true"></i>联系我们'.html_safe, new_suggestion_path %>      

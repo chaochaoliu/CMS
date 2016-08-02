@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :content %><br>
+    <label>内容</label><br>
     <%= f.text_area :content,cols: "50", rows: "10"  %>
   </div>
 
   <div class="field">
-    <label>隐私设置</label>
+    <label>是否同时发送给讲道人</label>
     <%= f.select :privacy_level, SermonReflection.privacy_level.values, {} %>  
   </div>
 

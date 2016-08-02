@@ -21,32 +21,8 @@
           </tbody>
 </table>
 </div>
-<h4>最新证道</h4>
- <div class=" col-md-12 col-lg-12 "> 
-<table class="table table-user-information">
-  <thead>
-    <tr>
-      <th>题目</th>  
-      <th>片长</th>
-      <th>日期</th>
-      <th>讲道人</th>
-      <th>类别</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @latest_sermons.each do |sermon| %>
-      <tr>
-        <td><%= link_to sermon.title, sermon %></td>
-        <td><%= sermon.length %></td>
-        <td><%= sermon.date.to_date %></td>
-        <td><%= sermon.preacher.name %></td>
-        <td><%= sermon.category %></td>      
-    <% end %>
-  </tbody>
-</table>
-</div>
+
 
 <h4>最新通知</h4>
  <div class=" col-md-12 col-lg-12 "> 
@@ -71,53 +47,16 @@
 </table>
 </div>
 
-<h4>最新新闻</h4>
- <div class=" col-md-12 col-lg-12 "> 
-<table class="table table-user-information">
-  <thead>
-    <tr>
-      <th>题目</th>
-      <th>作者</th>
-      <th>发布日期</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @latest_news.each do |latest_news| %>
-      <tr>
-        <td><%= link_to latest_news.title, latest_news %></td>
-        <td><%= latest_news.author %></td>
-        <td><%= latest_news.created_at.to_date %></td>
-        
-    <% end %>
-  </tbody>
-</table>
-</div>
 
-<h4>最新活动</h4>
- <div class=" col-md-12 col-lg-12 "> 
-<table class="table table-user-information">
-  <thead>
-    <tr>
-      <th>活动名称</th>
-      <th>主办单位</th>
-      <th>面向对象</th>  
-      <th>剩余席位</th>   
-      <th>申请截止时间</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= month_calendar  events: @events do |date, events|%>
+  <%= date.strftime("%m.%d") %>
 
-  <tbody>
-    <% @latest_events.each do |latest_event| %>
-      <tr>
-        <td><%= link_to latest_event.name, event_path(latest_event) %></td>
-        <td><%= latest_event.ministry %></td>
-        <td><%= latest_event.target_people %></td>
-        <td><%= latest_event.remaining_reservations %></td>
-        <td><%= latest_event.deadline_of_appication.to_date %></td>
-    <% end %>
-  </tbody>
-</table>
-</div>
+  <% events.each do |event| %>
+    <div>
+        <%= link_to event.title, event %>
+    </div>
+  <% end %>
+
+
+<% end %>

@@ -5,12 +5,13 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
-    @event_registration = EventRegistration.find_by(:user_id => current_user.id, :event_id => params[:event_id])
+    @event_registration = EventRegistration.find_by(:user_id => current_user.id, :event_id => params[:id])
   end
 
   # GET /events/new
@@ -28,6 +29,7 @@ class EventsController < ApplicationController
 
   def my_events
     @my_events = current_user.events
+    @my_approved_events = @my_events.where("approved = ?", '2')
   end
 
   def event_detail

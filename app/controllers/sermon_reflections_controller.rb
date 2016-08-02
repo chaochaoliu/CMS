@@ -27,6 +27,12 @@ class SermonReflectionsController < ApplicationController
 
   # GET /sermon_reflections/1/edit
   def edit
+    @sermon = Sermon.find(params[:sermon_id])
+
+  end
+
+  def my_sermon_reflections
+    @my_sermon_reflections = current_user.sermon_reflections
   end
 
   # POST /sermon_reflections
@@ -37,7 +43,7 @@ class SermonReflectionsController < ApplicationController
     @sermon_reflection.sermon = Sermon.find(sermon_reflection_params[:sermon_id])
     respond_to do |format|
       if @sermon_reflection.save
-        if @sermon_reflection.privacy_level == 1 || @event_sermon_reflection.privacy_level == 2
+        if @sermon_reflection.privacy_level == 2
           @preacher = @sermon_reflection.sermon.preacher
           UserMailer.email_sermon_reflection_to_preacher(@preacher, @sermon_reflection).deliver_later
         end
@@ -53,9 +59,10 @@ class SermonReflectionsController < ApplicationController
   # PATCH/PUT /sermon_reflections/1
   # PATCH/PUT /sermon_reflections/1.json
   def update
+    @sermon = 
     respond_to do |format|
       if @sermon_reflection.update(sermon_reflection_params)
-        format.html { redirect_to @sermon_reflection, notice: 'Sermon reflection was successfully updated.' }
+        format.html { redirect_to @sermon_reflection.sermon, notice: 'Sermon reflection was successfully updated.' }
         format.json { render :show, status: :ok, location: @sermon_reflection }
       else
         format.html { render :edit }

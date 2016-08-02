@@ -1,0 +1,23 @@
+<div class="row">
+                   
+    <div class="col-lg-9 maincontent">
+
+        <h1>默想见证</h1>
+        <div class="sideinfo">
+      
+        <p>日期：2016-2-13</p>
+       
+    </div>
+    <div class="clear"></div>
+    <ul class="news">
+    <% @recent_testimonys.each do |recent_testimony|%>
+    <li>
+        <p><%= recent_testimony.content %>
+    </p>
+  </li>
+    <%end%>
+  </ul>
+</div>
+</div>
+<br>
+<%= link_to "后退", testimony_path%>

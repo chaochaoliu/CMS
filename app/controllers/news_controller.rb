@@ -64,15 +64,28 @@ class NewsController < ApplicationController
   end
 
   def service_review
-    @service_reviews = News.service_review
+    @latest_sunday_service = Sermon.sunday_service.latest.last
+    @recent_sunday_services = Sermon.sunday_service.recent
+  end
+
+  def recent_sunday_service
+    @recent_sunday_service = Sermon.find(params[:service_id])
   end
 
   def testimony
-    @testimonys = News.grace_and_testimony
+    @latest_testimonys = News.grace_and_testimony.latest
+  end
+
+  def recent_testimony
+    @recent_testimonys = News.grace_and_testimony.recent
   end
 
   def good_news
-    @good_news = News.good_news
+    @latest_good_news = News.good_news.latest
+  end
+
+    def recent_good_news
+    @recent_good_news = News.good_news.recent
   end
 
   private

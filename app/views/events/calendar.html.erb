@@ -7,3 +7,13 @@
     </div>
   <% end %>
 <% end %>
+
+<%= week_calendar number_of_weeks: 2, events: @events do |date, events|%>
+  <%= date.strftime("%m.%d") %>
+
+  <% events.each do |event| %>
+    <div>
+      <%= link_to event.name, event %>
+    </div>
+  <% end %>
+<% end %>

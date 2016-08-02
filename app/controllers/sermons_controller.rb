@@ -10,6 +10,10 @@ class SermonsController < ApplicationController
   # GET /sermons/1
   # GET /sermons/1.json
   def show
+    @my_sermon_reflection = SermonReflection.find_by(:user_id => current_user.id,
+      :sermon_id => @sermon.id)
+
+    @sermon_sign_in = SermonSignIn.find_by(:user_id => current_user.id, :sermon_id => @sermon.id)
   end
 
   # GET /sermons/new
@@ -34,7 +38,7 @@ class SermonsController < ApplicationController
   end
 
   def prayer_meeting
-    @prayer_meetings= Sermon.prayer_meeting
+    @prayer_meetings = Sermon.prayer_meeting
   end
 
   # POST /sermons
@@ -85,6 +89,6 @@ class SermonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sermon_params
-      params.require(:sermon).permit(:title, :date, :preacher, :content, :category, :scripture,:sermon_audio,:sermon_video)
+      params.require(:sermon).permit(:title, :start_time, :preacher, :content, :category, :scripture,:sermon_audio,:sermon_video)
     end
 end

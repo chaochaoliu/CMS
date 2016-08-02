@@ -1,0 +1,29 @@
+
+<div class="row">
+                   
+<div class="col-lg-9 maincontent">
+    
+    
+    <h1>好消息</h1>
+    <div class="sideinfo">
+  
+    <p>日期：2016-2-13</p>
+   
+</div>
+<div class="clear"></div>
+<ul class="news">
+    <% @recent_good_news.each do |recent_good_news|%>
+<li>
+<p><%= recent_good_news.content %></p>
+<% if !recent_good_news.image.url.nil? %>
+<ul class="newsimages">
+    <li class="col-sm-10"><%= image_tag recent_good_news.image.url%></li>
+</ul>
+<%end%>
+</li>
+<%end%>
+</ul>
+
+</div>
+<br>
+<%= link_to "后退", good_news_path%>

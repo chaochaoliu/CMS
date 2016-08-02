@@ -11,8 +11,8 @@ class SermonReflection < ActiveRecord::Base
 
 
   enumerize :privacy_level, in: {
-                            "收藏，同时发送给讲道人" => 1 , 
-                            "仅收藏" => 2,
-                               }, default: "收藏，同时发送给讲道人"
+                            "否" => 1 , 
+                            "是" => 2,
+                               }, default: "否"
 
 end

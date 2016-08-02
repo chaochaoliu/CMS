@@ -32,7 +32,7 @@ class EventRegistrationsController < ApplicationController
 
     respond_to do |format|
       if @event_registration.save
-        format.html { redirect_to @event_registration.event, notice: '已经成功提交申请，请等待管理员回复。' }
+        format.html { redirect_to event_path(@event_registration.event), notice: '已经成功提交申请，请等待管理员回复。' }
         format.json { render :show, status: :created, location: @registration }
       else
         format.html { render :new }
@@ -46,6 +46,13 @@ class EventRegistrationsController < ApplicationController
   def update
     respond_to do |format|
       if @event_registration.update(event_registration_params)
+        
+        # if event_registration_params[:approved] == 2
+        #   @event_registration.event.decrement!(:remaining_reservation)
+        # elsif event_registration_params[:approved] == 1
+        #   @event_registration.event.increment!(:remaining_reservation)     
+        # end
+      
         format.html { redirect_to @event_registration, notice: 'Registration was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
@@ -73,6 +80,6 @@ class EventRegistrationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_registration_params
-      params.require(:event_registration).permit(:user_id, :event_id,:application_reason, :applicant_name, :approved?)
+      params.require(:event_registration).permit(:user_id, :event_id,:application_reason, :applicant_name, :approved)
     end
 end

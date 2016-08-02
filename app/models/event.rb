@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  extend Enumerize
   validates :name, presence: true
   validates :description, presence: true
   validates :ministry, presence: true
@@ -12,6 +13,12 @@ class Event < ActiveRecord::Base
   has_many :event_notices, dependent: :destroy
   has_many :event_sermons, dependent: :destroy
   has_paper_trail
+
+
+  enumerize :status, in: { 
+                       "最新" => 1,
+                       "最近" => 2,
+                       "过期" => 3}, default: "过期"
 
 
   def deadline_of_appication_cannot_be_in_the_past

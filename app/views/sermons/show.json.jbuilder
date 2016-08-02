@@ -1,1 +1,1 @@
-json.extract! @sermon, :id, :title, :date, :preacher, :content, :category, :created_at, :updated_at
+json.extract! @sermon, :id, :title, :start_time, :preacher, :content, :category, :created_at, :updated_at

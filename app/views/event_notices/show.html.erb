@@ -1,18 +1,17 @@
 
 <p>
-  <strong>Title:</strong>
+  <strong>题目:</strong>
   <%= @event_notice.title %>
 </p>
 
 <p>
-  <strong>Content:</strong>
+  <strong>内容:</strong>
   <%= @event_notice.content %>
 </p>
 
 <p>
-  <strong>Publisher:</strong>
+  <strong>发布者:</strong>
   <%= @event_notice.publisher %>
 </p>
 
-<%= link_to 'Edit', edit_event_notice_path(@event_notice) %> |
-<%= link_to 'Back', event_notices_path %>
+<%= link_to '后退', event_detail_path(:event_id => @event_notice.event.id) %>

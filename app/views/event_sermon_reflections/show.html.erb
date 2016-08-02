@@ -1,18 +1,14 @@
-
 <p>
-  <strong>Name:</strong>
-  <%= @event_sermon_reflection.name %>
+  <strong>证道名称:</strong>
+  <%= @event_sermon_reflection.event_sermon.title %>
 </p>
 
+
 <p>
-  <strong>Content:</strong>
+  <strong>感想内容:</strong>
   <%= @event_sermon_reflection.content %>
 </p>
 
-<p>
-  <strong>Event sermon:</strong>
-  <%= @event_sermon_reflection.event_sermon %>
-</p>
 
-<%= link_to 'Edit', edit_event_sermon_reflection_path(@event_sermon_reflection) %> |
-<%= link_to 'Back', event_sermon_reflections_path %>
+<%= link_to '编辑', edit_event_sermon_reflection_path(@event_sermon_reflection, :event_sermon_id => @event_sermon_reflection.event_sermon.id) %> |
+<%= link_to '后退', my_event_sermon_reflections_path %>

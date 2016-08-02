@@ -10,8 +10,8 @@ class EventSermonReflection < ActiveRecord::Base
   validates :user_id, presence: true, numericality: true
 
   enumerize :privacy_level, in: {
-                            "收藏，同时发送给讲道人" => 1 , 
-                            "仅收藏" => 2,
-                               }, default: "收藏，同时发送给讲道人"
+                            "仅收藏" => 1 , 
+                            "收藏，同时发送给讲道人" => 2,
+                               }, default: "仅收藏"
 
 end

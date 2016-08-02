@@ -1,0 +1,14 @@
+<div class="row">
+                   
+  <div class="col-lg-9 maincontent">  
+      <h1>礼拜回顾 - <%= @recent_sunday_service.title %></h1>
+      <div class="sideinfo">
+      <p>讲道人：<span><%= @recent_sunday_service.preacher.name %></span></p>
+      <p>日期：<%= @recent_sunday_service.created_at.to_date %></p>
+      <p>相关经文：<span><%= @recent_sunday_service.scripture %></span></p>
+  </div>
+  <div class="clear"></div>
+      <p><%= @recent_sunday_service.content %></p>
+  </div>
+</div>
+  <%= link_to "后退", service_review_path %>

@@ -1,4 +1,4 @@
-<h4><%= @event.name %>详情</h4>
+<h4><%= @event.title %>详情</h4>
  <div class=" col-md-12 col-lg-12 "> 
 <table class="table table-user-information">
   <thead>
@@ -16,10 +16,7 @@
       <tr>
         <td><%= link_to event_sermon.title, event_sermon %></td>
         <td><%= event_sermon.preacher.name %></td>
-        <td><%= event_sermon.sermon_date %></td>
-        <td><%= link_to 'Edit', edit_event_sermon_path(event_sermon,:event_id => event_sermon.event.id) %></td>
-        <td><%= link_to 'Destroy', event_sermon, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
-
+        <td><%= event_sermon.start_time.to_date %></td>
       </tr>
     <% end %>
     <%end%>
@@ -28,7 +25,6 @@
 </div>
 <br><br>
 
-<%= link_to '新建活动讲道', new_event_sermon_path(:event_id => @event.id) %>
 <br><br>
 <h4>活动通知</h4>
  <div class=" col-md-12 col-lg-12 "> 
@@ -48,9 +44,7 @@
       <tr>
         <td><%= link_to event_notice.title, event_notice %></td>
         <td><%= event_notice.publisher %></td>
-        <td><%= event_notice.created_at %></td>
-         <td><%= link_to 'Edit', edit_event_notice_path(event_notice,:event_id => event_notice.event.id) %></td>
-        <td><%= link_to 'Destroy', event_notice, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+        <td><%= event_notice.created_at.to_date %></td>
 
       </tr>
     <% end %>
@@ -60,5 +54,5 @@
 </div>
 <br><br>
 
-<%= link_to '新建通知', new_event_notice_path(:event_id => @event.id) %>
+<%= link_to "后退", my_events_path%>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160728221557) do
+ActiveRecord::Schema.define(version: 20160802164040) do
 
   create_table "church_staffs", force: :cascade do |t|
     t.integer  "position",   limit: 4
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20160728221557) do
 
   create_table "event_sermons", force: :cascade do |t|
     t.string   "title",        limit: 255
-    t.datetime "sermon_date"
+    t.datetime "start_time"
     t.string   "content",      limit: 255
     t.string   "sermon_audio", limit: 255
     t.string   "sermon_video", limit: 255
@@ -76,10 +76,9 @@ ActiveRecord::Schema.define(version: 20160728221557) do
     t.string   "length",       limit: 255
     t.integer  "preacher_id",  limit: 4
   end
-  add_index "event_sermons", ["preacher_id"], name: "index_event_sermons_on_event_preacher_id", using: :btree
 
   create_table "events", force: :cascade do |t|
-    t.string   "name",                   limit: 255
+    t.string   "title",                  limit: 255
     t.datetime "start_time"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
@@ -89,6 +88,8 @@ ActiveRecord::Schema.define(version: 20160728221557) do
     t.string   "target_people",          limit: 255
     t.integer  "remaining_reservations", limit: 4
     t.datetime "deadline_of_appication"
+    t.integer  "status",                 limit: 4
+    t.datetime "end_date"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -110,8 +111,9 @@ ActiveRecord::Schema.define(version: 20160728221557) do
     t.string   "image",      limit: 255
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-    t.boolean  "approved?"
     t.integer  "category",   limit: 4
+    t.integer  "status",     limit: 4
+    t.integer  "approved",   limit: 4
   end
 
   create_table "news_comments", force: :cascade do |t|
@@ -202,7 +204,7 @@ ActiveRecord::Schema.define(version: 20160728221557) do
   create_table "sermons", force: :cascade do |t|
     t.string   "title",        limit: 255
     t.string   "scripture",    limit: 255
-    t.datetime "date"
+    t.datetime "start_time"
     t.text     "content",      limit: 65535
     t.integer  "category",     limit: 4
     t.datetime "created_at",                 null: false
@@ -211,9 +213,8 @@ ActiveRecord::Schema.define(version: 20160728221557) do
     t.string   "sermon_video", limit: 255
     t.string   "length",       limit: 255
     t.integer  "preacher_id",  limit: 4
+    t.integer  "status",       limit: 4
   end
-    add_index "sermons", ["preacher_id"], name: "index_sermons_on_preacher_id", using: :btree
-
 
   create_table "suggestions", force: :cascade do |t|
     t.string   "title",      limit: 255

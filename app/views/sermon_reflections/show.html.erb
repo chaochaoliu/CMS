@@ -1,9 +1,12 @@
- 
+ <p>
+  <strong>证道名称:</strong>
+  <%= @sermon_reflection.sermon.title %>
+</p>
 
 <p>
-  <strong>Content:</strong>
+  <strong>感想内容:</strong>
   <%= @sermon_reflection.content %>
 </p>
 
-<%= link_to 'Edit', edit_sermon_reflection_path(@sermon_reflection) %> |
-<%= link_to 'Back', sermon_reflections_path %>
+<%= link_to '编辑', edit_sermon_reflection_path(@sermon_reflection, :sermon_id => @sermon_reflection.sermon.id) %> |
+<%= link_to '后退', my_sermon_reflections_path %>

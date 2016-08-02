@@ -18,7 +18,7 @@ class EventSermonsControllerTest < ActionController::TestCase
 
   test "should create event_sermon" do
     assert_difference('EventSermon.count') do
-      post :create, event_sermon: { content: @event_sermon.content, preacher: @event_sermon.preacher, sermon_audio: @event_sermon.sermon_audio, sermon_date: @event_sermon.sermon_date, sermon_video: @event_sermon.sermon_video, titil: @event_sermon.titil }
+      post :create, event_sermon: { content: @event_sermon.content, preacher: @event_sermon.preacher, sermon_audio: @event_sermon.sermon_audio, start_time: @event_sermon.start_time, sermon_video: @event_sermon.sermon_video, titil: @event_sermon.titil }
     end
 
     assert_redirected_to event_sermon_path(assigns(:event_sermon))
@@ -35,7 +35,7 @@ class EventSermonsControllerTest < ActionController::TestCase
   end
 
   test "should update event_sermon" do
-    patch :update, id: @event_sermon, event_sermon: { content: @event_sermon.content, preacher: @event_sermon.preacher, sermon_audio: @event_sermon.sermon_audio, sermon_date: @event_sermon.sermon_date, sermon_video: @event_sermon.sermon_video, titil: @event_sermon.titil }
+    patch :update, id: @event_sermon, event_sermon: { content: @event_sermon.content, preacher: @event_sermon.preacher, sermon_audio: @event_sermon.sermon_audio, start_time: @event_sermon.start_time, sermon_video: @event_sermon.sermon_video, titil: @event_sermon.titil }
     assert_redirected_to event_sermon_path(assigns(:event_sermon))
   end
 

@@ -6,12 +6,12 @@
 
 <p>
   <strong>讲道人：</strong>
-  <%= @event_sermon.preacher %>
+  <%= @event_sermon.preacher.name %>
 </p>
 
 <p>
   <strong>日期：</strong>
-  <%= @event_sermon.sermon_date %>
+  <%= @event_sermon.start_time.to_date %>
 </p>
 
 <p>
@@ -24,15 +24,19 @@
   <%= @event_sermon.sermon_audio %>
 </p>
 
+
+<%= link_to '后退', event_detail_path(:event_id => @event_sermon.event) %>
+<br><br>
+
 <p>
-  <strong>视频</strong>
-  <%= @event_sermon.sermon_video %>
+  <% if !@my_event_sermon_reflection.nil? %>
+  <strong>我的感想:</strong><br>
+  <%= @my_event_sermon_reflection.content %><br>
+  <%= link_to '编辑感想', edit_event_sermon_reflection_path(@my_event_sermon_reflection, :event_sermon_id => @event_sermon.id) %>
+  <%else%>
+  <%= link_to '写感想', new_event_sermon_reflection_path(:event_sermon_id => @event_sermon.id) %>
+  <%end%>
 </p>
 
-<%= link_to 'Edit', edit_event_sermon_path(@event_sermon) %> |
-<%= link_to 'Back', event_sermons_path %>
-<br><br>
-<%= link_to '写感想', new_event_sermon_reflection_path(:event_sermon_id => @event_sermon.id) %>
-<br><br>
 
 

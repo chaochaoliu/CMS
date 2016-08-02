@@ -10,6 +10,8 @@ class EventSermonsController < ApplicationController
   # GET /event_sermons/1
   # GET /event_sermons/1.json
   def show
+    @my_event_sermon_reflection = EventSermonReflection.find_by(:user_id => current_user.id,
+      :event_sermon_id => @event_sermon.id)
   end
 
   # GET /event_sermons/new
@@ -74,6 +76,6 @@ class EventSermonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_sermon_params
-      params.require(:event_sermon).permit(:event_id, :title, :preacher, :sermon_date, :content, :sermon_audio, :sermon_video)
+      params.require(:event_sermon).permit(:event_id, :title, :preacher, :start_time, :content, :sermon_audio, :sermon_video)
     end
 end

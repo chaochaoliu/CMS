@@ -4,12 +4,12 @@
 
 <p>
   <strong>活动名称</strong><br>
-  <%= @event.name %>
+  <%= @event.title  %>
 </p>
 
 <p>
   <strong>活动时间</strong>
-  <%= @event.start_time %>
+  <%= @event.start_time.to_date %>
 </p>
 
 <p>
@@ -38,7 +38,9 @@
 <label>已参加<label>
 <% end %>
 <br>
+
 <%= link_to '后退', events_path %>
+
 </div>
 </div>
 
