@@ -1,5 +1,6 @@
 class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show, :edit, :update, :destroy]
+  layout :resolve_layout
 
   # GET /notifications
   # GET /notifications.json
@@ -62,6 +63,14 @@ class NotificationsController < ApplicationController
   end
 
   private
+  def resolve_layout
+        case action_name
+        when "index"
+          "news"
+        else
+          "application"
+        end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_notification
       @notification = Notification.find(params[:id])

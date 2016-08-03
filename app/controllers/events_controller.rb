@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  layout :resolve_layout
+
 
   # GET /events
   # GET /events.json
@@ -78,6 +80,15 @@ class EventsController < ApplicationController
   end
 
   private
+
+    def resolve_layout
+        case action_name
+        when "my_events", "index"
+          "events"
+        else
+          "application"
+        end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])

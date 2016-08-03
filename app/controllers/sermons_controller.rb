@@ -1,5 +1,6 @@
 class SermonsController < ApplicationController
   before_action :set_sermon, only: [:show, :edit, :update, :destroy]
+  layout :resolve_layout
 
   # GET /sermons
   # GET /sermons.json
@@ -82,6 +83,14 @@ class SermonsController < ApplicationController
   end
 
   private
+  def resolve_layout
+        case action_name
+        when "sunday_service", "morning_service","wednesday_service","prayer_meeting"
+          "sermons"
+        else
+          "application"
+        end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_sermon
       @sermon = Sermon.find(params[:id])

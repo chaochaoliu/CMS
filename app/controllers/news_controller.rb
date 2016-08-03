@@ -1,5 +1,6 @@
 class NewsController < ApplicationController
   before_action :set_news, only: [:show, :edit, :update, :destroy]
+  layout :resolve_layout
 
   # GET /news
   # GET /news.json
@@ -65,7 +66,7 @@ class NewsController < ApplicationController
 
   def service_review
     @latest_sunday_service = Sermon.sunday_service.latest.last
-    @recent_sunday_services = Sermon.sunday_service.recent
+    @recent_sunday_services = Sermon.sunday_service.recent.last(3)
   end
 
   def recent_sunday_service
@@ -89,6 +90,14 @@ class NewsController < ApplicationController
   end
 
   private
+  def resolve_layout
+        case action_name
+        when "good_news", "testimony","service_review"
+          "news"
+        else
+          "application"
+        end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_news
       @news = News.find(params[:id])
