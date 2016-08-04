@@ -23,10 +23,8 @@ class News < ActiveRecord::Base
   enumerize :status, in: { 
                        "最新" => 1,
                        "最近" => 2,
-                       "过期" => 3}, default: "过期"
+                       "过期" => 3,
+                       "未批准" => 4}, default: "未批准"
 
-  enumerize :approved, in: {"是" => 1, 
-                          "否" => 2 , 
-                          }, default: "否"
 
 end

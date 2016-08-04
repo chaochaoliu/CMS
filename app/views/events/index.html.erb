@@ -30,11 +30,13 @@
         <td><%= event.deadline_of_appication.to_date %></td>
         <td>
           <% @event_registration = EventRegistration.find_by(:user_id => current_user.id, :event_id => event.id ) %>
-          <% if @event_registration.nil? %>未申请
-          <%elsif @event_registration.approved == 1%>
-            已申请
+          <% if @event_registration.nil? %>尚未申请
+          <%elsif @event_registration.status == 1%>
+            已提交申请，请等待管理员审查
+          <%elsif @event_registration.status == 2%>
+            已通过申请
             <%else%>
-            已参加
+            申请被管理员拒绝
           <%end%>
         </td>
       </tr>

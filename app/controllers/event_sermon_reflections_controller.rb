@@ -82,6 +82,6 @@ class EventSermonReflectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_sermon_reflection_params
-      params.require(:event_sermon_reflection).permit(:name,:title,:content, :event_sermon_id)
+      params.require(:event_sermon_reflection).permit(:name,:title,:content, :event_sermon_id,:privacy_level)
     end
 end

@@ -28,10 +28,13 @@
 
 <% if @event_registration.nil? %>
 <%= link_to '申请参加', new_event_registration_path(:event_id => @event.id) %>
-<% elsif @event_registration.approved == 1 %>
-<label>已提交申请，等待批准<label>
-<% else %>
-<label>已参加<label>
+
+  <%elsif @event_registration.status == 1%>
+    已提交申请，请等待管理员审查
+  <%elsif @event_registration.status == 2%>
+    已通过申请
+    <%else%>
+    申请被管理员拒绝
 <% end %>
 <br>
 

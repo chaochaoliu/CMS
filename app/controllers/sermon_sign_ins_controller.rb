@@ -32,6 +32,8 @@ class SermonSignInsController < ApplicationController
 
     respond_to do |format|
       if @sermon_sign_in.save
+        @sermon_sign_in.sermon.increment!(:sign_in_count)
+
         format.html { redirect_to @sermon_sign_in.sermon, notice: '您已经成功签到，写份感想吧。' }
         format.json { render :show, status: :created, location: @sermon_sign_in }
       else

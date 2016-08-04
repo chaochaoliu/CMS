@@ -30,8 +30,13 @@ class EventsController < ApplicationController
   end
 
   def my_events
-    @my_events = current_user.events
-    @my_approved_events = @my_events.where("approved = ?", '2').order(:start_time).page params[:page]
+    @unsorted_my_approved_events = []
+    @my_approved_event_registrations = EventRegistration.where(user_id: current_user.id, status: '2')
+    @my_approved_event_registrations.each do |my_approved_event_registration|
+      @unsorted_my_approved_events << my_approved_event_registration.event
+    end
+    @unsorted_my_approved_events.sort_by! { |thing| thing.start_time }
+    @my_approved_events = Kaminari.paginate_array(@unsorted_my_approved_events).page(params[:page]).per(3) 
   end
 
   def event_detail

@@ -42,6 +42,10 @@ class SermonsController < ApplicationController
     @prayer_meetings = Sermon.prayer_meeting.order(:start_time).page params[:page]
   end
 
+  def other_service
+    @other_services = Sermon.other_service.order(:start_time).page params[:page]
+  end
+
   # POST /sermons
   # POST /sermons.json
   def create
@@ -98,6 +102,6 @@ class SermonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sermon_params
-      params.require(:sermon).permit(:title, :start_time, :preacher, :content, :category, :scripture,:sermon_audio,:sermon_video)
+      params.require(:sermon).permit(:title, :start_time, :preacher, :content, :category, :scripture,:sermon_audio,:sermon_video,:status,:sign_in_count)
     end
 end

@@ -16,7 +16,6 @@ class Event < ActiveRecord::Base
 
   paginates_per 3
 
-
   enumerize :status, in: { 
                        "最新" => 1,
                        "最近" => 2,

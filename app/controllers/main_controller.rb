@@ -5,8 +5,13 @@ class MainController < ApplicationController
     @latest_events = Event.last(2)
     @latest_scripture = DailyScripture.last
     
+    @my_approved_events = []
     @event_sermons = []
-    @my_approved_events = current_user.events.where("approved = ?", '2')
+    @my_approved_event_registrations = EventRegistration.where(user_id: current_user.id, status: '2')
+    @my_approved_event_registrations.each do |my_approved_event_registration|
+      @my_approved_events << my_approved_event_registration.event
+    end
+
     @my_approved_events.each do |approved_event|
         approved_event.event_sermons.each do |event_sermon|
            @event_sermons << event_sermon

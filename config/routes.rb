@@ -49,6 +49,8 @@ Rails.application.routes.draw do
   get 'sunday_service' => 'sermons#sunday_service', :as => 'sunday_service'
   get 'morning_service' => 'sermons#morning_service', :as => 'morning_service'
   get 'wednesday_service' => 'sermons#wednesday_service', :as => 'wednesday_service'
+  get 'other_service' => 'sermons#other_service', :as => 'other_service'
+ 
   get 'prayer_meeting' => 'sermons#prayer_meeting', :as => 'prayer_meeting'
   get 'my_sermon_reflections' => 'sermon_reflections#my_sermon_reflections', :as => 'my_sermon_reflections'
   get 'my_event_sermon_reflections' => 'event_sermon_reflections#my_event_sermon_reflections', :as => 'my_event_sermon_reflections'

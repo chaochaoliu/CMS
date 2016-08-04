@@ -21,8 +21,12 @@
 
 <p>
   <strong>音频</strong>
-  <%= @event_sermon.sermon_audio %>
+  <audio src="<%= audio_path 'test.mp3'%>" type="audio/mpeg" controls>
+    Your browser does not support the audio element.
+</audio>
+<br><br>
 </p>
+
 
 
 <%= link_to '后退', event_detail_path(:event_id => @event_sermon.event) %>

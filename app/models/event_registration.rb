@@ -11,7 +11,7 @@ class EventRegistration < ActiveRecord::Base
   validates :application_reason, presence: true
 
 
-  enumerize :approved, in: {"未批准" => 1, 
-                          "批准" => 2
-                             }, default: "未批准"
+  enumerize :status, in: {"审查中" => 1, 
+                          "批准" => 2,
+                           "拒绝" => 3 }, default: "审查中"
 end

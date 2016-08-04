@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160802164040) do
+ActiveRecord::Schema.define(version: 20160804182652) do
 
   create_table "church_staffs", force: :cascade do |t|
     t.integer  "position",   limit: 4
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20160802164040) do
     t.datetime "updated_at",                       null: false
     t.string   "applicant_name",     limit: 255
     t.text     "application_reason", limit: 65535
-    t.integer  "approved",           limit: 4
+    t.integer  "status",             limit: 4
   end
 
   add_index "event_registrations", ["event_id"], name: "index_event_registrations_on_event_id", using: :btree
@@ -65,16 +65,17 @@ ActiveRecord::Schema.define(version: 20160802164040) do
   add_index "event_sermon_reflections", ["event_sermon_id"], name: "index_event_sermon_reflections_on_event_sermon_id", using: :btree
 
   create_table "event_sermons", force: :cascade do |t|
-    t.string   "title",        limit: 255
+    t.string   "title",         limit: 255
     t.datetime "start_time"
-    t.string   "content",      limit: 255
-    t.string   "sermon_audio", limit: 255
-    t.string   "sermon_video", limit: 255
-    t.integer  "event_id",     limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.string   "length",       limit: 255
-    t.integer  "preacher_id",  limit: 4
+    t.string   "content",       limit: 255
+    t.string   "sermon_audio",  limit: 255
+    t.string   "sermon_video",  limit: 255
+    t.integer  "event_id",      limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "length",        limit: 255
+    t.integer  "preacher_id",   limit: 4
+    t.integer  "sign_in_count", limit: 4
   end
 
   create_table "events", force: :cascade do |t|
@@ -86,7 +87,6 @@ ActiveRecord::Schema.define(version: 20160802164040) do
     t.string   "ministry",               limit: 255
     t.string   "max_number_of_people",   limit: 255
     t.string   "target_people",          limit: 255
-    t.integer  "remaining_reservations", limit: 4
     t.datetime "deadline_of_appication"
     t.integer  "status",                 limit: 4
     t.datetime "end_date"
@@ -113,7 +113,6 @@ ActiveRecord::Schema.define(version: 20160802164040) do
     t.datetime "updated_at",               null: false
     t.integer  "category",   limit: 4
     t.integer  "status",     limit: 4
-    t.integer  "approved",   limit: 4
   end
 
   create_table "news_comments", force: :cascade do |t|
@@ -202,18 +201,19 @@ ActiveRecord::Schema.define(version: 20160802164040) do
   add_index "sermon_sign_ins", ["user_id"], name: "index_sermon_sign_ins_on_user_id", using: :btree
 
   create_table "sermons", force: :cascade do |t|
-    t.string   "title",        limit: 255
-    t.string   "scripture",    limit: 255
+    t.string   "title",         limit: 255
+    t.string   "scripture",     limit: 255
     t.datetime "start_time"
-    t.text     "content",      limit: 65535
-    t.integer  "category",     limit: 4
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.string   "sermon_audio", limit: 255
-    t.string   "sermon_video", limit: 255
-    t.string   "length",       limit: 255
-    t.integer  "preacher_id",  limit: 4
-    t.integer  "status",       limit: 4
+    t.text     "content",       limit: 65535
+    t.integer  "category",      limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "sermon_audio",  limit: 255
+    t.string   "sermon_video",  limit: 255
+    t.string   "length",        limit: 255
+    t.integer  "preacher_id",   limit: 4
+    t.integer  "status",        limit: 4
+    t.integer  "sign_in_count", limit: 4
   end
 
   create_table "suggestions", force: :cascade do |t|
