@@ -14,10 +14,11 @@
 
   <tbody>
       <tr>
-        <td><%= @latest_scripture.title %></td>
-        <td><%= @latest_scripture.content %></td>
-        <td><%= @latest_scripture.created_at.to_date %></td>
-
+        <% unless @latest_scripture.nil? %>
+          <td><%= @latest_scripture.title %></td>
+          <td><%= @latest_scripture.content %></td>
+          <td><%= @latest_scripture.created_at.to_date %></td>
+        <%end%>
           </tbody>
 </table>
 </div>
@@ -37,26 +38,27 @@
   </thead>
 
   <tbody>
+   <% unless @latest_notifications.nil? %>
     <% @latest_notifications.each do |latest_notification| %>
       <tr>
         <td><%= link_to latest_notification.title, latest_notification %></td>
         <td><%= latest_notification.publisher %></td>
         <td><%= latest_notification.created_at.to_date %></td>      
     <% end %>
+   <% end %> 
   </tbody>
 </table>
 </div>
 
 
+<% unless @latest_notifications.nil? %>
+  <%= month_calendar  events: @events do |date, events|%>
+    <%= date.strftime("%m.%d") %>
 
-<%= month_calendar  events: @events do |date, events|%>
-  <%= date.strftime("%m.%d") %>
-
-  <% events.each do |event| %>
-    <div>
-        <%= link_to event.title, event %>
-    </div>
+    <% events.each do |event| %>
+      <div>
+          <%= link_to event.title, event %>
+      </div>
+    <% end %>
   <% end %>
-
-
 <% end %>
