@@ -1,8 +1,7 @@
 User.create!([
-  {email: "un_approved123@gmail.com", role_id: 2, encrypted_password: "$2a$10$d1vNk0uHLlVA0evU9YOa5uu4pELnGOF1S98M.FCotF9ax00Z6dcS.", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 138, current_sign_in_at: "2016-08-04 23:25:54", last_sign_in_at: "2016-08-04 22:06:40", current_sign_in_ip: "::1", last_sign_in_ip: "::1", failed_attempts: 0},
-  {email: "approved@gmail.com", role_id: 2, encrypted_password: "$2a$10$OAgJazSB30TRgYwDl1OAoezsPJnlXTKcWyQI2HjxVnQDZWn4X5EVO", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 10, current_sign_in_at: "2016-07-03 02:35:20", last_sign_in_at: "2016-06-08 05:45:00", current_sign_in_ip: "::1", last_sign_in_ip: "::1", failed_attempts: 0},
-  {email: "staff@gmail.com", role_id: 3, encrypted_password: "$2a$10$FoDD2.nFK61kJRTAjgpzUO2rmGqkf/qV2Z41de086kXC/HsLgOSQ.", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 104, current_sign_in_at: "2016-08-03 17:36:20", last_sign_in_at: "2016-08-03 17:34:15", current_sign_in_ip: "::1", last_sign_in_ip: "::1", failed_attempts: 0},
-  {email: "superadmin@gmail.com", role_id: 4, encrypted_password: "$2a$10$bNAOwUDPgIi/cs7H5x/McuP3jgK402zeRri2AdLjuQ0y3pwniJ9Se", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 28, current_sign_in_at: "2016-07-21 23:56:11", last_sign_in_at: "2016-07-21 23:10:20", current_sign_in_ip: "::1", last_sign_in_ip: "::1", failed_attempts: 0}
+  {email: "approved@gmail.com",password: "11111111", role_id: 2},
+  {email: "staff@gmail.com", password: "11111111",role_id: 3},
+  {email: "superadmin@gmail.com", password: "11111111",role_id: 4}
 ])
 ChurchStaff.create!([
   {position: 1, email: "liuchao200240@gmail.com", name: nil},
