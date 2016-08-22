@@ -1,4 +1,5 @@
 User.create!([
+  {email: "un_approved123@gmail.com",password: "11111111", role_id: 1},
   {email: "approved@gmail.com",password: "11111111", role_id: 2},
   {email: "staff@gmail.com", password: "11111111",role_id: 3},
   {email: "superadmin@gmail.com", password: "11111111",role_id: 4}

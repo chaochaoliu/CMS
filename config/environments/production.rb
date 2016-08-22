@@ -47,13 +47,6 @@ Rails.application.configure do
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
   config.log_level = :debug
-  if Rails.env.development?
-            # Don't log to STDOUT, by default rails s will handle it
-            config.logger = Logger.new('/dev/null')
-        else
-            # Don't log to file, sending everything to unicorn file.
-            config.logger = Logger.new(STDOUT)
-        end
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
