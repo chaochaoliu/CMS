@@ -15,7 +15,7 @@ class Profile < ActiveRecord::Base
   validates :time_to_become_member, presence: true
   validates :image, presence: true
   validates :nationality, presence: true
-  validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
   validates :address, presence: true
   validates :group_leader, presence: true
   validates :home_town_contact_person, presence: true
